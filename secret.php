@@ -1,2 +1,0 @@
-VIKTIGT LÖSENORD
-Xd
