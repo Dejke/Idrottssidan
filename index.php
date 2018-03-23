@@ -1,6 +1,6 @@
 <?
     //We be testing, yo chiilll
-    require("secret.php");
+    include "secret.php";
 
     
     $mysqli = new mysqli($SECRET["url"], $SECRET["user"], $SECRET["password"], $SECRET["database"]);
