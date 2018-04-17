@@ -8,8 +8,11 @@
 		function validate(form){
 
 			var e = form.elements;
-			if (e["password"] == e["password2"] && e["email"] == e["email2"]){
+			if (e["password"].value == e["password2"].value && e["email"].value == e["email2"].value){
+
+				// oof
 				return true;
+
 			} else return false;
 
 		}
