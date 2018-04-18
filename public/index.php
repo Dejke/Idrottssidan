@@ -5,10 +5,10 @@
     $mysqli = new mysqli($SECRET["url"], $SECRET["user"], $SECRET["password"], $SECRET["database"]);
     
     if($mysqli->connect_errno){
-        echo "yo waddup";
-        echo $SECRET["password"];
+        echo "something is wrong my dude";
     }
-    else{
-        echo "no boi";
-    }
+
+
+
+    $mysqli->close();
 ?>
