@@ -1,5 +1,5 @@
 <?
-    if(isset($_SESSION["USER"]))
+    if(!isset($_SESSION["USER"]))
         header("Location: signIn.php");
     
     //We be testing, yo chiilllaiowdjaiow

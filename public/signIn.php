@@ -13,6 +13,9 @@
 			display: none;
 			color: red;
 		}
+        .signup-fields{
+            display:none;
+        }
 
 	</style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -47,7 +50,9 @@
                 ?>
             </select><br>
         </div>
-		<input type="submit" value="Skapa konto">
+		<input type="submit" value="Logga in">
+        <br>
+        <a href="#" onclick="showSignupFields();">Registrera ett konto</a>
 
 	</form>
     
@@ -83,6 +88,7 @@
         return passwordMatch && emailMatch;
 
     }
+    //Lägg till jquery listener...
 
 </script>
 
