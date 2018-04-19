@@ -8,7 +8,7 @@
     $mysqli = new mysqli($SECRET["url"], $SECRET["user"], $SECRET["password"], $SECRET["database"]);
     
     if($mysqli->connect_errno){
-        echo "something is wrong my dude";
+        echo "something is wrong my dude".$mysqli->connect_error;
     }
 
 
