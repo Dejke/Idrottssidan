@@ -52,18 +52,25 @@
 	<form action="db_add_user.php" method="post" onsubmit="return validate(this)">
 		
 		<span id="email-warning">Email måste matcha<br></span>
-		<span>Email</span><br>
+		<label>Email</label><br>
 		<input type="text" name="email"><br>
 
-		<span>Email igen</span><br>
+		<label>Email igen</label><br>
 		<input type="text" name="email2"><br><br>
 
 		<span id="password-warning" >Lösenord måste matcha<br></span>
 		<span>Lösenord</span><br>
 		<input type="password" name="password"><br>
 
-		<span>Lösenord igen</span><br>
-		<input type="password" name="password2">
+		<label>Lösenord igen</label><br>
+		<input type="password" name="password2"><br><br>
+
+		<label>Klass</label><br>
+		<select name="class">
+			<?
+				/*hämta klasser typ*/
+			?>
+		</select><br>
 
 		<input type="submit" value="Skapa konto">
 
