@@ -1,4 +1,7 @@
 <?
+    if(isset($_SESSION["USER"]))
+        header("Location: signIn.php");
+    
     //We be testing, yo chiilllaiowdjaiow
     include "secret.php";
 
