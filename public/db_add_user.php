@@ -13,8 +13,10 @@
 
     if ($_POST["email"] && $_POST["password"]){
 
-    	
+
     	echo "it be working";
+    	$ay = password_hash($_POST["password"], PASSWORD_BCRYPT);
+    	echo strlen($ay);
 
 
     } else echo "sorry fam";

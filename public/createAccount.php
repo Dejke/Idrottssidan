@@ -21,25 +21,30 @@
 		function validate(form){
 
 			var e = form.elements;
-			if (e["password"].value == e["password2"].value){ 
+			var passwordMatch = false;
+			var emailMatch = false;
+			var classSelected = true;
 
-				if (e["email"].value == e["email2"].value){
+			if (e["email"].value == e["email2"].value){
 
-					return true;
+				emailMatch = true;
 
-				} else {
+			} else {
+				document.getElementById('email-warning').style.display = "inline";
 
-					document.getElementById('email-warning').style.display = "inline";
-					return false;
+			}
 
-				}
+			if (e["password"].value == e["password2"].value){
+
+				passwordMatch = true;
 
 			} else {
 
 				document.getElementById('password-warning').style.display = "inline";
-				return false;
 
 			}
+
+			return passwordMatch && emailMatch;
 
 		}
 
