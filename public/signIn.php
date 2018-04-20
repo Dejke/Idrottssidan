@@ -1,3 +1,4 @@
+<? include"sql_setup.php"; ?>
 <!DOCTYPE html>
 <html>
 <head>
