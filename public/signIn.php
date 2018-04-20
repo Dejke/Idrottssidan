@@ -61,7 +61,25 @@
         <label>Klass</label>
         <select name="class">
             <?
-                /*hämta klasser typ*/
+                if ($stmt = $mysqli->prepare("
+
+                    SELECT NAME, ID 
+                    FROM CLASSES
+
+                ")) {
+
+                    $stmt->execute();
+                    $stmt->bind_result($name, $id);
+
+                    while($stmt->fetch()){
+
+                        echo "<option value='".$id."'>".$name."</option>";
+
+                    }
+
+                    $stmt->close();
+
+                }
             ?>
         </select><br><br>
         
