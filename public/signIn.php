@@ -4,10 +4,13 @@
 <head>
 	<title>Skapa konto</title>
 
-
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<style type="text/css">
-		
+		.containz{
+            background-color:salmon;
+            margin: 0 auto;
+            text-align:center;
+        }
 		#email-warning{
 			
             display: none;
@@ -29,7 +32,7 @@
 </head>
 <body>
 
-
+<div class="containz">
     <form id="loginForm" method="post" action="db_login.php" class="login-fields">
         <label>Email</label><br>
 		<input type="text" name="email"><br>
@@ -41,8 +44,7 @@
     </form>
 
     <form id="signupForm" method="post" action="db_add_user.php" onsubmit="return validate(this)" class="signup-fields">
-        
-		
+
 		<span id="email-warning">Email måste matcha<br></span>
 		<label>Email</label><br>
 		<input type="email" name="email"><br>
@@ -81,8 +83,11 @@
 
                 }
             ?>
-        </select><br><br>
-        
+        </select><br>
+        <label>Förnamn</label><br>
+        <input type="text" name="fname" max="64"><br>
+        <label>Efternamn</label><br>
+        <input type="text" name="lname" max="64"><br>
         <input type="submit" value="Registrera">
     </form>
 	<!-- Eller ska den skicka till self?!?!? hmmm idk meme -->
@@ -91,8 +96,9 @@
         <a href="#" id="signup">Registrera ett konto</button>
     </div>
     <div class="signup-fields">
-        <a href="#" id="signin">Logga in</button>
+        <a href="#" id="signin">Är du redan registrerad? Logga in</button>
     </a>
+</div>
 </body>
 <script type="text/javascript">
 	var currentForm = "signin";
