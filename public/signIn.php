@@ -28,43 +28,46 @@
 </head>
 <body>
 
-	<!-- Eller ska den skicka till self?!?!? hmmm idk meme -->
-	<form method="post" onsubmit="return validate(this)">
+
+    <form id="loginForm" method="post" action="db_login.php" class="login-fields">
+        <label>Email</label><br>
+		<input type="text" name="email"><br>
+
+		<span>Lösenord</span><br>
+		<input type="password" name="password"><br>
+
+        <input type="submit" value="Logga in">
+    </form>
+
+    <form id="signupForm" method="post" action="db_add_user.php" onsubmit="return validate(this)" class="signup-fields">
+        
 		
 		<span id="email-warning">Email måste matcha<br></span>
 		<label>Email</label><br>
-		<input type="text" name="email"><br>
+		<input type="email" name="email"><br>
 
-        <div class="signup-fields">
-            <label>Upprepa email</label><br>
-            <input type="text" name="email2"><br><br>
-        </div>
-		
+        <label>Upprepa email</label><br>
+        <input type="email" name="email2"><br><br>
+
+
         <span id="password-warning">Lösenord måste matcha<br></span>
 		<span>Lösenord</span><br>
 		<input type="password" name="password"><br>
 
-        <div class="signup-fields">
-            <label>Upprepa lösenord</label><br>
-            <input type="password" name="password2"><br><br>
+        <label>Upprepa lösenord</label><br>
+        <input type="password" name="password2"><br><br>
 
-            <label>Klass</label>
-            <select name="class">
-                <?
-                    /*hämta klasser typ*/
-                ?>
-            </select><br><br>
-        </div>
-		<div class="login-fields">
-            <input formaction="db_login.php" type="submit" value="Logga in">
-        </div>
+        <label>Klass</label>
+        <select name="class">
+            <?
+                /*hämta klasser typ*/
+            ?>
+        </select><br><br>
         
-        <div class="signup-fields">
-            <input formaction="db_add_user.php" type="submit" value="Registrera">
-        </div>    
-        <br>
+        <input type="submit" value="Registrera">
+    </form>
+	<!-- Eller ska den skicka till self?!?!? hmmm idk meme -->
 
-	</form>
     <div class="login-fields">
         <a href="#" id="signup">Registrera ett konto</button>
     </div>
