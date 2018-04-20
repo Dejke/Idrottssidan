@@ -3,6 +3,8 @@
 <head>
 	<title>Skapa konto</title>
 
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<style type="text/css">
 		
 		#email-warning{
@@ -113,7 +115,8 @@
     $("#signin").click(function(){
         $(".signup-fields").css("display", "none");
         $(".login-fields").css("display", "block");
-        currentForm = "signup";
+        $("#email-warning, #password-warning").css("display","none")
+        currentForm = "signin";
     });
 </script>
 
