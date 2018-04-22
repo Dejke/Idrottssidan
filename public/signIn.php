@@ -7,12 +7,17 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<style type="text/css">
 		.containz{
-            background-color:salmon;
+            background-color:lightgray;
+            width: 300px;
             margin: 0 auto;
             text-align:center;
+            padding: 15px;
+            padding-top: 80px;
+            margin-top: 200px;
+            display: inline-block;
+            position: relative;
         }
 		#email-warning{
-			
             display: none;
 			color: red;
 		}
@@ -24,9 +29,11 @@
 
         #logo{
             position:absolute;
-            top:-70px;
-            width: 50px;
-            height: 50px;
+            top:-50px;
+            left: 50%;
+            margin-left:-50px;
+            width: 100px;
+            height: 120px;
             background:url("images/logo.png");
             background-size:cover;
         }
@@ -34,18 +41,16 @@
             
             display:none;
         }
-        .containz{
-            display: inline-block;
-            position: relative;
-        }
         body{
             text-align:center;
-            margin-top:200px;
         }
         
         @media (max-width: 767.98px) {
             .containz{
                 width: 100%;
+                /*
+                    Fix bomile thanks
+                */
             }
         }
 
@@ -59,10 +64,11 @@
     <div id="logo"></div>
     <form id="loginForm" method="post" action="db_login.php" class="login-fields">
         <label>Email</label><br>
-		<input type="text" name="email"><br>
-
+		<input type="text" name="email">
+        <br><br>
 		<span>Lösenord</span><br>
-		<input type="password" name="password"><br>
+		<input type="password" name="password">
+        <br><br>
 
         <input type="submit" value="Logga in">
     </form>
@@ -107,14 +113,19 @@
 
                 }
             ?>
-        </select><br>
+        </select>
+        <br><br>
         <label>Förnamn</label><br>
-        <input type="text" name="fname" max="64"><br>
-        <label>Efternamn</label><br>
-        <input type="text" name="lname" max="64"><br>
+        <input type="text" name="fname" max="64">
+        <br>
+        <label>Efternamn</label>
+        <br>
+        <input type="text" name="lname" max="64">
+        <br><br>
         <input type="submit" value="Registrera">
     </form>
-	<!-- Eller ska den skicka till self?!?!? hmmm idk meme -->
+
+    <br>
 
     <div class="login-fields">
         <a href="#" id="signup">Registrera ett konto</button>
