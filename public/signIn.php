@@ -21,9 +21,32 @@
             display: none;
 			color: red;
 		}
+
+        #logo{
+            position:absolute;
+            top:-70px;
+            width: 50px;
+            height: 50px;
+            background:url("images/logo.png");
+            background-size:cover;
+        }
         .signup-fields{
             
             display:none;
+        }
+        .containz{
+            display: inline-block;
+            position: relative;
+        }
+        body{
+            text-align:center;
+            margin-top:200px;
+        }
+        
+        @media (max-width: 767.98px) {
+            .containz{
+                width: 100%;
+            }
         }
 
 	</style>
@@ -33,6 +56,7 @@
 <body>
 
 <div class="containz">
+    <div id="logo"></div>
     <form id="loginForm" method="post" action="db_login.php" class="login-fields">
         <label>Email</label><br>
 		<input type="text" name="email"><br>
