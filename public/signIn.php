@@ -13,7 +13,6 @@
             text-align:center;
             padding: 15px;
             padding-top: 80px;
-            margin-top: 200px;
             display: inline-block;
             position: relative;
         }
@@ -42,7 +41,15 @@
             display:none;
         }
         body{
-            text-align:center;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }   
+        html{
+            padding:80px 0 50px 0;
+        }
+        html,body{
+            height:100%;
         }
         
         @media (max-width: 767.98px) {
@@ -66,7 +73,7 @@
         <label>Email</label><br>
 		<input type="text" name="email">
         <br><br>
-		<span>Lösenord</span><br>
+		<label>Lösenord</label><br>
 		<input type="password" name="password">
         <br><br>
 
@@ -77,10 +84,10 @@
 
 		<span id="email-warning">Email måste matcha<br></span>
 		<label>Email</label><br>
-		<input type="email" name="email"><br>
+		<input type="text" name="email"><br>
 
         <label>Upprepa email</label><br>
-        <input type="email" name="email2"><br><br>
+        <input type="text" name="email2"><br><br>
 
 
         <span id="password-warning">Lösenord måste matcha<br></span>
