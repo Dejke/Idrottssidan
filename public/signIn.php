@@ -29,8 +29,7 @@
         #logo{
             position:absolute;
             top:-50px;
-            left: 50%;
-            margin-left:-50px;
+            left: calc(50% - 50px);
             width: 100px;
             height: 120px;
             background:url("images/logo.png");
