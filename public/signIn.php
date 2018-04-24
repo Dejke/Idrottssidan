@@ -142,12 +142,8 @@
 </div>
 </body>
 <script type="text/javascript">
-	var currentForm = "signin";
 
     function validate(form){
-        if(currentForm == "signin"){
-            return true;
-        }
         var e = form.elements;
         var passwordMatch = false;
         var emailMatch = false;
@@ -178,14 +174,12 @@
     $("#signup").click(function(){
         $(".signup-fields").css("display", "block");
         $(".login-fields").css("display", "none");
-        currentForm = "signup";
     });
 
     $("#signin").click(function(){
         $(".signup-fields").css("display", "none");
         $(".login-fields").css("display", "block");
-        $("#email-warning, #password-warning").css("display","none")
-        currentForm = "signin";
+        $("#email-warning, #password-warning").css("display","none");
     });
 </script>
 
