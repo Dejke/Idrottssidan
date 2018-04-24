@@ -84,10 +84,10 @@
 
 		<span id="email-warning">Email måste matcha<br></span>
 		<label>Email</label><br>
-		<input type="text" name="email"><br>
+		<input type="text" name="email"><span>@ksgyf.se</span><br>
 
         <label>Upprepa email</label><br>
-        <input type="text" name="email2"><br><br>
+        <input type="text" name="email2"><span>@ksgyf.se</span><br><br>
 
 
         <span id="password-warning">Lösenord måste matcha<br></span>
