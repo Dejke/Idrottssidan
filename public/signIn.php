@@ -69,7 +69,7 @@
 <div class="containz">
     <div id="logo"></div>
     <form id="loginForm" method="post" action="db_login.php" class="login-fields">
-        <label>Email</label><br>
+        <label>Ksgyf-email</label><br>
 		<input type="text" name="email">
         <br><br>
 		<label>Lösenord</label><br>
@@ -82,10 +82,10 @@
     <form id="signupForm" method="post" action="db_add_user.php" onsubmit="return validate(this)" class="signup-fields">
 
 		<span id="email-warning"><br></span>
-		<label>Email</label><br>
+		<label>Ksgyf-email</label><br>
 		<input type="text" name="email"><br>
 
-        <label>Upprepa email</label><br>
+        <label>Upprepa ksgyf-email</label><br>
         <input type="text" name="email2"><br><br>
 
 
@@ -97,7 +97,7 @@
         <input type="password" name="password2"><br><br>
 
         <label>Klass:</label>
-        <select name="program">
+        <select name="programme">
             <option value="BA">BA</option>
             <option value="EE">EE</option>
             <option value="FT">FT</option>
@@ -107,12 +107,24 @@
             <option value="NA">NA</option>
             <option value="TE">TE</option>
             <option value="VF">VF</option>
-            "BA", "EE","FT", "HV", "IM", "IMS", "NA", "TE", VF"
         </select>
-        <select>
+        <select name="grade">
             <?
-
+                /*år, med php?*/
+                for($year = ((int) date("Y")); $year >= (int)(date("Y")-2); $year--){
+                    $abbrev = substr($year, -2);
+                    echo('<option value="'.$abbrev.'">'.$abbrev.'</option>');
+                }
             ?>
+        </select>
+
+        <select name = "letter">
+                <?
+                    for($i = 65; $i <= 65+12; $i++){
+                        $chr = chr($i);
+                        echo('<option value="'.$chr.'">'.$chr.'</option>');
+                    }
+                ?>
         </select>
         <br><br>
         <label>Förnamn</label><br>
@@ -177,6 +189,10 @@
         $(".login-fields").css("display", "block");
         $("#email-warning, #password-warning").css("display","none");
     });
+
+    /*$("#signupForm [name='email']").focusout(function(){
+        if($(this).text());
+    });*/
     
 </script>
 
