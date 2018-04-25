@@ -177,6 +177,7 @@
         $(".login-fields").css("display", "block");
         $("#email-warning, #password-warning").css("display","none");
     });
+    
 </script>
 
 </html>
