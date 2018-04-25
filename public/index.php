@@ -1,6 +1,10 @@
 <?
-    if(!isset($_SESSION["USER"]))
+    session_start();
+
+    if(!isset($_SESSION["USER"])){
         header("Location: signin.php");
+        exit;
+    }
     
     //We be testing, yo chiilllaiowdjaiow
     include "secret.php";

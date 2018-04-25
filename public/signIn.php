@@ -67,7 +67,7 @@
 <body>
 <div class="containz">
     <div id="logo"></div>
-    <form id="loginForm" method="post" action="db_login.php" class="login-fields">
+    <form id="loginForm" method="post" action="db_sign_in.php" class="login-fields">
         <label>Ksgyf-email</label><br>
 		<input type="text" name="email">
         <br><br>
