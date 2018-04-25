@@ -65,7 +65,6 @@
 	
 </head>
 <body>
-
 <div class="containz">
     <div id="logo"></div>
     <form id="loginForm" method="post" action="db_login.php" class="login-fields">
@@ -110,8 +109,15 @@
         </select>
         <select name="grade">
             <?
-                /*år, med php?*/
-                for($year = ((int) date("Y")); $year >= (int)(date("Y")-2); $year--){
+
+                if(date('n')>=7){
+                    $highestYear = date("Y");
+                }
+                else{
+                    $highestYear = date("Y")-1;
+                }
+
+                for($year = $highestYear; $year >= (int)($highestYear-2); $year--){
                     $abbrev = substr($year, -2);
                     echo('<option value="'.$abbrev.'">'.$abbrev.'</option>');
                 }
@@ -161,7 +167,7 @@
 
         } else {
             document.getElementById('email-warning').style.display = "inline";
-            document.getElementById('email-warning').text = "Emailadresserna måste matcha";
+            document.getElementById('email-warning').innerHTML = "Emailadresserna måste matcha<br>";
 
         }
 
@@ -172,6 +178,7 @@
         } else {
 
             document.getElementById('password-warning').style.display = "inline";
+            document.getElementById('password-warning').innerHTML = "Lösenorden måste matcha<br>";
 
         }
 
