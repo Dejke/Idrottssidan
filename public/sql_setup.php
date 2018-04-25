@@ -7,5 +7,7 @@
         echo "something is wrong my dude ".$mysqli->connect_error;
         exit;
     }
+
+    $mysqli->set_charset("utf8");
 	
 ?>
