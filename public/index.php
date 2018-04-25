@@ -1,6 +1,6 @@
 <?
     if(!isset($_SESSION["USER"]))
-        header("Location: signIn.php");
+        header("Location: signin.php");
     
     //We be testing, yo chiilllaiowdjaiow
     include "secret.php";

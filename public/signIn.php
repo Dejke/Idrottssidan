@@ -81,15 +81,15 @@
 
     <form id="signupForm" method="post" action="db_add_user.php" onsubmit="return validate(this)" class="signup-fields">
 
-		<span id="email-warning">Email måste matcha<br></span>
+		<span id="email-warning"><br></span>
 		<label>Email</label><br>
-		<input type="text" name="email"><span>@ksgyf.se</span><br>
+		<input type="text" name="email"><br>
 
         <label>Upprepa email</label><br>
-        <input type="text" name="email2"><span>@ksgyf.se</span><br><br>
+        <input type="text" name="email2"><br><br>
 
 
-        <span id="password-warning">Lösenord måste matcha<br></span>
+        <span id="password-warning"><br></span>
 		<span>Lösenord</span><br>
 		<input type="password" name="password"><br>
 
