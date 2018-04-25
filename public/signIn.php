@@ -82,10 +82,10 @@
 
 		<span id="email-warning"><br></span>
 		<label>Ksgyf-email</label><br>
-		<input type="text" name="email"><br>
+		<input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en emailadress från ksgyf."><br>
 
         <label>Upprepa ksgyf-email</label><br>
-        <input type="text" name="email2"><br><br>
+        <input type="text" name="email2"<br><br>
 
 
         <span id="password-warning"><br></span>
