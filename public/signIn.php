@@ -96,28 +96,22 @@
         <label>Upprepa lösenord</label><br>
         <input type="password" name="password2"><br><br>
 
-        <label>Klass</label>
-        <select name="class">
+        <label>Klass:</label>
+        <select name="program">
+            <option value="BA">BA</option>
+            <option value="EE">EE</option>
+            <option value="FT">FT</option>
+            <option value="HV">HV</option>
+            <option value="IM">IM</option>
+            <option value="IMS">IMS</option>
+            <option value="NA">NA</option>
+            <option value="TE">TE</option>
+            <option value="VF">VF</option>
+            "BA", "EE","FT", "HV", "IM", "IMS", "NA", "TE", VF"
+        </select>
+        <select>
             <?
-                if ($stmt = $mysqli->prepare("
 
-                    SELECT NAME, ID 
-                    FROM CLASSES
-
-                ")) {
-
-                    $stmt->execute();
-                    $stmt->bind_result($name, $id);
-
-                    while($stmt->fetch()){
-
-                        echo "<option value='".$id."'>".$name."</option>";
-
-                    }
-
-                    $stmt->close();
-
-                }
             ?>
         </select>
         <br><br>
@@ -155,6 +149,8 @@
 
         } else {
             document.getElementById('email-warning').style.display = "inline";
+            document.getElementById('email-warning').text = "Emailadresserna måste matcha";
+
         }
 
         if (e["password"].value == e["password2"].value){
