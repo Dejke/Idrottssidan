@@ -8,4 +8,7 @@
     
     //We be testing, yo chiilllaisdowdjaiow
     include "sql_setup.php";
+
+    echo $_SESSION["USER"];
+
 ?>
