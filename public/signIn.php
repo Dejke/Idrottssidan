@@ -118,6 +118,7 @@
         <select name="grade">
             <?
 
+                // OOOF måste lägga till kommentar för att filstorleken  ändras memex
                 if(date('n')>=7){
                     $highestYear = date("Y");
                 }
