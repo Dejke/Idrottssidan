@@ -51,13 +51,8 @@
             height:100%;
         }
         
-        @media (max-width: 767.98px) {
-            .containz{
-                width: 100%;
-                /*
-                    Fix bomile thanks
-                */
-            }
+        @media (: 767.98px) {
+            
         }
 
 	</style>
@@ -67,7 +62,7 @@
 <body>
 <div class="containz">
     <div id="logo"></div>
-    <form id="loginForm" method="post" action="db_sign_in.php" class="login-fields">
+    <form id="loginForm" method="post" action="db_sign_in.php" class="fields login-fields">
         <label>Ksgyf-email</label><br>
 		<input type="text" name="email">
         <br><br>
@@ -78,7 +73,7 @@
         <input type="submit" value="Logga in">
     </form>
 
-    <form id="signupForm" method="post" action="db_add_user.php" onsubmit="return validate(this)" class="signup-fields">
+    <form id="signupForm" method="post" action="db_add_user.php" onsubmit="return validate(this)" class="fields signup-fields">
 
 		<span id="email-warning"><br></span>
 		<label>Ksgyf-email</label><br>
@@ -145,12 +140,16 @@
 
     <br>
 
-    <div class="login-fields">
+    <div class="fields login-fields">
         <a href="#" id="signup">Registrera ett konto</button>
     </div>
-    <div class="signup-fields">
-        <a href="#" id="signin">Är du redan registrerad? Logga in</button>
-    </a>
+    <div class="fields signup-fields">
+        <a href="#" id="login">Är du redan registrerad? Logga in</a>
+    </div>
+    <div class="fields pwreset-fields">
+        <a href = "#" id="pwreset">Glömt ditt lösenord?</a>
+    </div>
+    
 </div>
 </body>
 <script type="text/javascript">
@@ -187,20 +186,33 @@
     }
 
     $("#signup").click(function(){
-        $(".signup-fields").css("display", "block");
-        $(".login-fields").css("display", "none");
+        setForm("signup");
     });
 
-    $("#signin").click(function(){
-        $(".signup-fields").css("display", "none");
-        $(".login-fields").css("display", "block");
-        $("#email-warning, #password-warning").css("display","none");
+    $("#login").click(function(){
+        setForm("login");
     });
-
-    /*$("#signupForm [name='email']").focusout(function(){
-        if($(this).text());
-    });*/
     
+    $("#pwreset").click(function(){
+        setForm("pwreset");
+    });
+    
+
+    function setForm(newForm){
+        switch(newForm){
+            case "login":
+
+                break;
+            case "signup":
+
+                break;
+            case "pwreset":
+
+                break;
+            default:
+                Console.error("newForm existerar inte.");
+        }
+    }
 </script>
 
 </html>
