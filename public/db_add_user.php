@@ -45,7 +45,6 @@
 
     		$stmt->execute();
     		$stmt->close();
-
     		
    			header("Location: signIn.php?message=accountcreated");
    			exit;
@@ -54,7 +53,6 @@
 
 
     } else echo "sorry fam";
-
 
 	$mysqli->close();
 

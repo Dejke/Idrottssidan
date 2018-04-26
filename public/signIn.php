@@ -1,4 +1,12 @@
-<? include"sql_setup.php"; ?>
+<? 
+    
+    session_start();
+    if(isset($_SESSION["USER"])){
+        header("Location: index.php");
+        exit;
+    }
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,6 +113,7 @@
         <select name="grade">
             <?
 
+                // OOOF måste lägga till kommentar för att filstorleken  ändras memex
                 if(date('n')>=7){
                     $highestYear = date("Y");
                 }
