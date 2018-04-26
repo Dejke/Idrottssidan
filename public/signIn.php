@@ -201,7 +201,8 @@
     function setForm(newForm){
         switch(newForm){
             case "login":
-
+                $(".fields").css("display","none");
+                $("#login-fields").css("display);
                 break;
             case "signup":
 
