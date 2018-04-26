@@ -6,7 +6,7 @@
 
 		if ($stmt = $mysqli->prepare("
 
-    		SELECT PASSWORD, ID
+    		SELECT ID, PASSWORD
     		FROM USERS
     		WHERE EMAIL = ?
 
@@ -17,19 +17,22 @@
 
 			$stmt->execute();
 
-			$stmt->bind_result($hash, $id);
-			$stmt->close();
+			$stmt->bind_result($id, $hash);
 
-			if (password_verify($_POST["password"], $hash)){
+			if ($stmt->fetch()) {
 
-				$_SESSION["USER"] = $id;
-				header("Location: index.php");
-				exit;
+				if (password_verify($_POST["password"], $hash)){
 
-			} else {
+					$_SESSION["USER"] = $id;
+					header("Location: index.php");
+					exit;
 
-				header("Location: signIn.php?message=invalidlogin");
-				exit;
+				} else {
+
+					header("Location: signIn.php?message=invalidlogin");
+					exit;
+
+				}
 
 			}
 
@@ -37,7 +40,7 @@
 
 	} else {
 
-		header("Location: signIn.php?message=skriv");
+		header("Location: signIn.php?message=invalidlogin");
 		exit;
 
 	}
