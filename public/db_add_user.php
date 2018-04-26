@@ -19,6 +19,7 @@
    			$stmt->execute();
    			if ($stmt->fetch()){
    				header("Location: signIn.php?message=existingemail");
+   				exit;
    			}
 
    			$stmt->close();
@@ -47,6 +48,7 @@
 
     		
    			header("Location: signIn.php?message=accountcreated");
+   			exit;
 
     	}
 
