@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Skapa konto</title>
+	<title>Logga in</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<style type="text/css">
@@ -93,7 +93,7 @@
 		<input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en emailadress från ksgyf."><br>
 
         <label>Upprepa ksgyf-email</label><br>
-        <input type="text" name="email2"<br><br>
+        <input type="text" name="email2"><br><br>
 
 
         <span id="password-warning"><br></span>
