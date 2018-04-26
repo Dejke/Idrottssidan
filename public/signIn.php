@@ -47,6 +47,10 @@
             
             display:none;
         }
+        .pwreset-fields{
+            
+            display:none;
+        }
         body{
             display:flex;
             justify-content:center;
@@ -69,7 +73,10 @@
 </head>
 <body>
 <div class="containz">
+
     <div id="logo"></div>
+
+    <!-- LOG IN FORM MEME (VAD I HEL VETE DEN LÄGGER TILL EN BR SOM FÖRSVINNER OM MAN KLICKAR PÅ EN LÄNK OCH SEN TILLBAKA WTff??!?!?!?+ -->
     <form id="loginForm" method="post" action="db_sign_in.php" class="fields login-fields">
         <label>Ksgyf-email</label><br>
 		<input type="text" name="email">
@@ -81,6 +88,7 @@
         <input type="submit" value="Logga in">
     </form>
 
+    <!-- SIGN UP FORM MEME -->
     <form id="signupForm" method="post" action="db_add_user.php" onsubmit="return validate(this)" class="fields signup-fields">
 
 		<span id="email-warning"><br></span>
@@ -147,16 +155,28 @@
         <input type="submit" value="Registrera">
     </form>
 
+    <!-- PASS RESET FORM MEME -->
+    <form id="passwordResetForm" method="post" action="" class="fields pwreset-fields">
+        <label>Ksgyf-email</label><br>
+        <input type="text" name="email">
+        <br><br>
+
+        <input type="submit" value="Skicka email">
+    </form>
+
     <br>
 
     <div class="fields login-fields">
-        <a href="#" id="signup">Registrera ett konto</button>
+        <a href="#" id="signup">Registrera ett konto</a>
     </div>
     <div class="fields signup-fields">
         <a href="#" id="login">Är du redan registrerad? Logga in</a>
     </div>
-    <div class="fields pwreset-fields">
+    <div class="fields login-fields">
         <a href = "#" id="pwreset">Glömt ditt lösenord?</a>
+    </div>
+    <div class="fields pwreset-fields">
+        <a href = "#" id="login2">Logga in</a>
     </div>
     
 </div>
@@ -176,7 +196,6 @@
         } else {
             document.getElementById('email-warning').style.display = "inline";
             document.getElementById('email-warning').innerHTML = "Emailadresserna måste matcha<br>";
-
         }
 
         if (e["password"].value == e["password2"].value){
@@ -191,7 +210,6 @@
         }
 
         return passwordMatch && emailMatch;
-
     }
 
     $("#signup").click(function(){
@@ -202,27 +220,35 @@
         setForm("login");
     });
     
+    $("#login2").click(function(){
+        setForm("login");
+    });
+
     $("#pwreset").click(function(){
         setForm("pwreset");
     });
     
 
     function setForm(newForm){
+
+        $(".fields").css("display","none");
+
         switch(newForm){
             case "login":
-                $(".fields").css("display","none");
-                $("#login-fields").css("display);
+                $(".login-fields").css("display", "inline-block");
                 break;
             case "signup":
-
+                $(".signup-fields").css("display", "inline-block");
                 break;
             case "pwreset":
-
+                $(".pwreset-fields").css("display", "inline-block");
                 break;
             default:
                 Console.error("newForm existerar inte.");
+                break;
         }
     }
+
 </script>
 
 </html>
