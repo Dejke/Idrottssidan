@@ -15,7 +15,6 @@
     //We be testing, yo chiilllaisdowdjaiow
     include "sql_setup.php";
 
-    echo $_SESSION["USER"];
 
 ?>
 
@@ -23,12 +22,14 @@
 <html>
 <head>
     <title></title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
 <body>
-
+    <?include "header.php";?>
     <form action="<? echo $SERVER['HTTP_HOST'] ?>" method="post" >
         <input type="submit" name="logout" value="yo">
     </form>
 
 </body>
 </html>
+<?echo $_SESSION["USER"]?>
