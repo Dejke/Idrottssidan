@@ -15,7 +15,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<style type="text/css">
 		.containz{
-            background-color:lightgray;
+            background-color:#dab420;
             width: 300px;
             margin: 0 auto;
             text-align:center;
