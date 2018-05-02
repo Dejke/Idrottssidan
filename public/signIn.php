@@ -94,15 +94,15 @@
     <!-- SIGN UP FORM MEME -->
     <form id="signupForm" method="post" action="db_add_user.php" onsubmit="return validate(this)" class="fields signup-fields">
 
-		<span id="email-warning"><br></span>
+		<span id="email-warning"></span>
 		<label>Ksgyf-email</label><br>
-		<input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en emailadress från ksgyf."><br>
+		<input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en emailadress från ksgyf." onfocusout="studentMailCheck(this);"><br>
 
         <label>Upprepa ksgyf-email</label><br>
         <input type="text" name="email2"><br><br>
 
 
-        <span id="password-warning"><br></span>
+        <span id="password-warning"></span>
 		<span>Lösenord</span><br>
 		<input type="password" name="password"><br>
 
@@ -110,7 +110,8 @@
         <input type="password" name="password2"><br><br>
 
         <label>Klass:</label>
-        <select name="programme">
+        <select name="programme" class="classFields">
+            <option value="TEACHER"></option>
             <option value="BA">BA</option>
             <option value="EE">EE</option>
             <option value="FT">FT</option>
@@ -121,7 +122,8 @@
             <option value="TE">TE</option>
             <option value="VF">VF</option>
         </select>
-        <select name="grade">
+        <select name="grade" class="classFields">
+            <option value="TEACHER"></option>
             <?
 
                 // OOOF måste lägga till kommentar för att filstorleken  ändras memex
@@ -139,7 +141,8 @@
             ?>
         </select>
 
-        <select name = "letter">
+        <select name = "letter" class = "classFields">
+            <option value="TEACHER"></option>
                 <?
                     for($i = 65; $i <= 65+12; $i++){
                         $chr = chr($i);
@@ -213,6 +216,20 @@
         }
 
         return passwordMatch && emailMatch;
+    }
+
+    function studentMailCheck(field){
+        if(/\.student\@/.test(field.value)){
+            <?/* när ".student@" finns i fältet*/?>
+            
+        }
+        else{
+            <?/* när ".student@" inte finns i fältet*/?>
+            $(".classFields")
+                .val("0")
+                .attr("disabled","disabled");
+
+        }
     }
 
     $("#signup").click(function(){
