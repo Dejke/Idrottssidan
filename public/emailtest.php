@@ -47,7 +47,7 @@
 	$mail->MsgHTML($body);
 
 	// *********** ADRESSER ATT SKICKA TILL !! *********
-	//$address = $email;
+	$address = $_POST["email"];
 	$mail->AddAddress($address);
 	//$mail->AddCC("KopiaTill@adress", "Namn på personen");
 	//$mail->AddAttachment("images/phpmailer.gif");      // attachment
