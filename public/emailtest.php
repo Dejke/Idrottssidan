@@ -1,14 +1,20 @@
 <?
-	
-	$address = "martin.persson@ksgyf.se";
-	
-	// Get the adress from a form.
 	/*
-	$address = test_input($_POST["email"]);
+		$_POST
+			["recipient"]
+			["file"]
+	*/
+	
+
+	
+	$address = test_input($_POST["recipient"]);
 	if (!filter_var($address, FILTER_VALIDATE_EMAIL)) {
   		$emailErr = "Invalid email format"; 
 	}
-	*/
+
+
+	$body 				= /*TODO, använd OB_START*/;
+	
 	
 ////////////////////////MAIL-SCRIPT////////////////////////////////////////////
 	//ini_set('display_errors', 1);
@@ -19,12 +25,6 @@
 	$mail             = new PHPMailer();
 
 
-	$body 				= "Välkommen till svampklubben!<br><br>
-							På onsdag ska vi börja våra studier av svampar i hemmet.<br>
-							Vi börjar hemma hos Bosse som säger att det växer en massa intressanta saker på hans vind.
-							Tiden är 18:00 - 20:00.<br><br>
-							Torleif står för fikat den här veckan.<br><br>
-							Mvh Sigurd Murkla";
 	
 	$mail->IsSMTP(); // telling the class to use SMTP
 	$mail->Host       = "mailcluster.loopia.se"; // SMTP server
@@ -47,7 +47,6 @@
 	$mail->MsgHTML($body);
 
 	// *********** ADRESSER ATT SKICKA TILL !! *********
-	$address = $_POST["email"];
 	$mail->AddAddress($address);
 	//$mail->AddCC("KopiaTill@adress", "Namn på personen");
 	//$mail->AddAttachment("images/phpmailer.gif");      // attachment
