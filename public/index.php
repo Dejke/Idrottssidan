@@ -14,8 +14,6 @@
     
     //We be testing, yo chiilllaisdowdjaiow
     include "sql_setup.php";
-
-
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +27,36 @@
     <form action="<? echo $SERVER['HTTP_HOST'] ?>" method="post" >
         <input type="submit" name="logout" value="yo">
     </form>
+
+    <?
+        // HÄMTA AKTIVITETER
+
+        if ($stmt = $mysqli->prepare("
+            SELECT ACTIVITIES.NAME
+            FROM ACTIVITIES 
+            INNER JOIN ACTIVITY_PAIR
+            ON ACTIVITIES.ID = ACTIVITY_PAIR.ACTIVITY_ID
+            INNER JOIN USERS
+            ON (ACTIVITY_PAIR.USER_PROGRAMME = USERS.PROGRAMME OR ACTIVITY_PAIR.USER_PROGRAMME IS NULL)
+            AND (ACTIVITY_PAIR.USER_GRADE = USERS.GRADE OR ACTIVITY_PAIR.USER_GRADE IS NULL)
+            AND (ACTIVITY_PAIR.USER_LETTER = USERS.LETTER OR ACTIVITY_PAIR.USER_LETTER IS NULL)
+            WHERE USERS.ID = ?
+        ")){
+
+            $stmt->bind_param("i", $_SESSION["USER"]);
+            $stmt->execute();
+
+            $stmt->bind_result($name);
+
+            while($stmt->fetch()){
+                echo $name."<br>";
+            }
+
+        } else {
+            echo "NÅT GICK FEL";
+        }
+
+    ?>
 
 </body>
 </html>
