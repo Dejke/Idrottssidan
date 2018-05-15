@@ -48,7 +48,8 @@
                     $key = uniqid('',true);
                     $stmt->bind_param("si", $key, $id);
                     $stmt->execute();
-                    header("Location")
+                    header("Location:signIn.php?message=pwreset_sent");
+                    exit;
                 }
             }
         }

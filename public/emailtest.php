@@ -1,24 +1,27 @@
 <?
 	/*
-		$_POST
+		$_GET
 			["recipient"]
 			["file"]
 	*/
 	
 
-	
-	$address = test_input($_POST["recipient"]);
+	echo $_GET["recipient"];
+	echo $_GET["file"];
+	$address = test_input($_GET["recipient"]);
 	if (!filter_var($address, FILTER_VALIDATE_EMAIL)) {
   		$emailErr = "Invalid email format"; 
 	}
 
-
-	$body 				= /*TODO, använd OB_START*/;
-	
+	ob_start();
+    include($_GET["file"]);
+    $body=ob_get_contents(); 
+	ob_end_clean();
+	$body = "MEMES UNITED";
 	
 ////////////////////////MAIL-SCRIPT////////////////////////////////////////////
-	//ini_set('display_errors', 1);
-	//error_reporting(~0);
+	ini_set('display_errors', 1);
+	error_reporting(~0);
 
 	require_once('phpmailer/class.phpmailer.php');
 	//include("phpmailer/class.smtp.php"); // optional, gets called from within class.phpmailer.php if not already loaded
@@ -52,15 +55,11 @@
 	//$mail->AddAttachment("images/phpmailer.gif");      // attachment
 	//$mail->AddAttachment("images/phpmailer_mini.gif"); // attachment
 
-
-	// *********** KODEN HÄR UNDER SKICKAR IVÄG DITT MAIL **********
-	/*
 	if(!$mail->Send()) {
 	  echo "Mailer Error: " . $mail->ErrorInfo;
 	} else {
 	  //header('Location: index.php');
 	  echo "Your mail has been sent!";
 	}
-	*/
 	
 ?>
