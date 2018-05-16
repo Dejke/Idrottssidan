@@ -75,4 +75,7 @@
     </div>
 
 </body>
+    <form action="<?$_SERVER['PHP-SELF'];?>" method="post">
+    <input type="submit" name = "logout" value ="logout">
+    </form>
 </html>
