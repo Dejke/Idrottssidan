@@ -1,5 +1,6 @@
 <?
     session_start();
+    
 
     if (isset($_POST["logout"])){
         session_destroy();
@@ -12,7 +13,7 @@
         exit;
     }
     
-    //We be testing, yo chiidslllaisdsddowdwdjadwadsdiow
+    //We be testing, yo chiidslllaisdsddowdwdjadwadsdiow*/
     include "sql_setup.php";
 ?>
 
