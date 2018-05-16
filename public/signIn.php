@@ -221,13 +221,14 @@
     function studentMailCheck(field){
         if(/\.student\@/.test(field.value)){
             <?/* när ".student@" finns i fältet*/?>
-            
+            $(".classFields")
+                .prop("disabled",false);
         }
         else{
             <?/* när ".student@" inte finns i fältet*/?>
             $(".classFields")
                 .val("0")
-                .attr("disabled","disabled");
+                .prop("disabled",true);
 
         }
     }
