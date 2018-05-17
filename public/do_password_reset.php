@@ -9,7 +9,7 @@ ini_set('display_errors', 'on');
     */
     if(!isset($_POST["email"])){
         echo "no email value in POST";
-        break;
+        exit;
     }
 
     if ($stmt = $mysqli->prepare("
@@ -37,7 +37,7 @@ ini_set('display_errors', 'on');
                     
 
                 $stmt->bind_param("i",$id);
-                $stmt->execeute();
+                $stmt->execute();
 
 
                 //add a new PASSWORD_RESET entry
@@ -57,9 +57,9 @@ ini_set('display_errors', 'on');
             }
         }
         else{
-            //email is ZUCC
-            header("signIn.php?message=invalidemail");
-            break;
+            //email is ZUCC 
+            header("Location: signIn.php?message=invalidemail");
+            exit;
         }
     }  
 ?>
