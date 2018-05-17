@@ -1,3 +1,30 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style type="text/css">
+
+  .user{
+    width: 50px;
+    height: 50px;
+  }
+  .user i{
+    font-size: 3em;
+  }
+  .drop{
+    font-size: 1em;
+
+    width: 200px;
+    height: auto;
+
+    background-color: green;
+    display: none;
+
+    position: relative;
+    left:-150px;
+  }
+
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
     <div style= "
@@ -10,24 +37,22 @@
             alt = "Lars Kagg"></div>
     </a>
 
-  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-    
-  </div> 
+  <div class="user navbar-nav ml-auto">
+    <i class="fas fa-user"></i>
+    <div class="drop h4 text-center">
+      <span class="p2">HALLÅs</span><br>
+      <a href="db_log_out.php">Logga ut</a>
+    </div>
+  </div>
   
 
     <!--
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button">
         Dropdown button
-      </button>
+      </button>ko
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Action</a>s
         <a class="dropdown-item" href="#">Another action</a>
         <a class="dropdown-item" href="#">Something else here</a>
       </div>
@@ -35,3 +60,12 @@
     -->
 
 </nav>
+<script type="text/javascript">
+  
+  $(".user i").click(function(){
+
+    $(".drop").slideToggle(100);
+
+  });
+
+</script>

@@ -1,12 +1,5 @@
 <?
     session_start();
-    
-
-    if (isset($_POST["logout"])){
-        session_destroy();
-        header("Location: signIn.php");
-        exit;
-    }
 
     if(!isset($_SESSION["USER"])){
         header("Location: signIn.php");
@@ -75,7 +68,4 @@
     </div>
 
 </body>
-    <form action="<?$_SERVER['PHP-SELF'];?>" method="post">
-    <input type="submit" name = "logout" value ="logout">
-    </form>
 </html>
