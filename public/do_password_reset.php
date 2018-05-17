@@ -1,4 +1,7 @@
 <?
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
+    echo "MEME";
     include "sql_setup.php";
     /*
         $_POST[”email"] vilket konto som ska återställas
@@ -29,7 +32,7 @@
             //Remove any existing PASSWORD_RESETS entries
             if($stmt = $mysqli->prepare("
                 DELETE FROM PASSWORD_RESETS
-                    WHERE ID = ?
+                    WHERE USER_ID = ?
             ")){
                     
 
@@ -40,15 +43,15 @@
                 //add a new PASSWORD_RESET entry
                 if($stmt = $mysqli->prepare("
                     INSERT INTO PASSWORD_RESETS 
-                        RANDOM_STRING, USER_ID
+                        (RANDOM_STRING, USER_ID)
                         VALUES
-                            ?,?
+                            (?,?)
                 ")){
 
                     $key = uniqid('',true);
                     $stmt->bind_param("si", $key, $id);
                     $stmt->execute();
-                    header("Location:signIn.php?message=pwreset_sent");
+                    header("Location:register_land_page.php");
                     exit;
                 }
             }
@@ -59,8 +62,4 @@
             break;
         }
     }  
-
-
 ?>
-
-Vi har skickat ett email med en återställningslänk för ditt lösenord. 
