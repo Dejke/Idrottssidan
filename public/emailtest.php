@@ -28,7 +28,6 @@
 	$mail             = new PHPMailer();
 
 
-	/*
 	$mail->IsSMTP(); // telling the class to use SMTP
 	$mail->Host       = "mailcluster.loopia.se"; // SMTP server
 	$mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
@@ -39,18 +38,7 @@
 	$mail->Port		  = 587;
 	$mail->Username   = "noreply@kaggteknik.se";  // username
 	$mail->Password   = "bumbibjorn3000";          // password
-	*/
-
-	$mail->IsSMTP(); // telling the class to use SMTP
-	$mail->Host       = "smtp.mailtrap.io"; // SMTP server
-	$mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
-											   // 1 = errors and messages
-								   // 2 = messages only
-	$mail->SMTPAuth   = true;                  // enable SMTP authentication
-	$mail->SMTPSecure = "tls";                 // sets the prefix to the server
-	$mail->Port		  = 587;
-	$mail->Username   = "900a6bdd10fabb";  // username
-	$mail->Password   = "fa7ef1c9b25819";          // password
+	
   
 
 	//$mail->SetFrom('noreply@kaggteknik.se', 'Lasse Kagg');
