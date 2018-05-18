@@ -37,7 +37,7 @@ ini_set('display_errors', 'on');
                     
 
                 $stmt->bind_param("i",$id);
-                $stmt->execeute();
+                $stmt->execute();
 
 
                 //add a new PASSWORD_RESET entry
