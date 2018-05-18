@@ -9,7 +9,7 @@ ini_set('display_errors', 'on');
     */
     if(!isset($_POST["email"])){
         echo "no email value in POST";
-        break;
+        exit;
     }
 
     if ($stmt = $mysqli->prepare("
@@ -57,9 +57,9 @@ ini_set('display_errors', 'on');
             }
         }
         else{
-            //email is ZUCC
-            header("signIn.php?message=invalidemail");
-            break;
+            //email is ZUCC 
+            header("Location: signIn.php?message=invalidemail");
+            exit;
         }
     }  
 ?>
