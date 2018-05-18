@@ -1,7 +1,4 @@
 <?
-error_reporting(E_ALL);
-ini_set('display_errors', 'on');
-    echo "MEME";
     include "sql_setup.php";
     /*
         $_POST[”email"] vilket konto som ska återställas
@@ -14,7 +11,7 @@ ini_set('display_errors', 'on');
 
     if ($stmt = $mysqli->prepare("
 
-    		SELECT ID
+        SELECT ID
     		FROM USERS
     		WHERE EMAIL = ?
 
@@ -30,6 +27,8 @@ ini_set('display_errors', 'on');
             //An account is associated with the email
 
             //Remove any existing PASSWORD_RESETS entries
+            echo "Error 1 :".$mysqli->error;
+            $stmt = null;
             if($stmt = $mysqli->prepare("
                 DELETE FROM PASSWORD_RESETS
                     WHERE USER_ID = ?
@@ -61,5 +60,8 @@ ini_set('display_errors', 'on');
             header("Location: signIn.php?message=invalidemail");
             exit;
         }
-    }  
+    }
+    else{
+        echo "shits fucked 1";
+    }
 ?>

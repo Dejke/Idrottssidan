@@ -162,7 +162,7 @@
     </form>
 
     <!-- PASS RESET FORM MEME -->
-    <form id="passwordResetForm" method="post" action="do_password_reset.php" class="fields pwreset-fields">
+    <form id="passwordResetForm" method="post" action="db_password_reset.php" class="fields pwreset-fields">
         <label>Ksgyf-email</label><br>
         <input type="text" name="email">
         <br><br>
