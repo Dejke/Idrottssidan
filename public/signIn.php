@@ -13,63 +13,22 @@
 	<title>Logga in</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-	<style type="text/css">
-		.containz{
-            background-color: lightgray;
-            width: 300px;
-            margin: 0 auto;
-            text-align:center;
-            padding: 15px;
-            padding-top: 80px;
-            display: inline-block;
-            position: relative;
-        }
+    <link rel="stylesheet" href="stylesheets/signIn.css">
+    <style type="text/css">
 		#email-warning{
             display: none;
 			color: red;
 		}
-		#password-warning{
-			
+		#password-warning{	
             display: none;
 			color: red;
 		}
-
-        #logo{
-            position:absolute;
-            top:-50px;
-            left: calc(50% - 50px);
-            width: 100px;
-            height: 120px;
-            background:url("images/logo.png");
-            background-size:cover;
-        }
         .signup-fields{
-            
             display:none;
         }
         .pwreset-fields{
-            
             display:none;
         }
-        body{
-            display:flex;
-            justify-content:center;
-            align-items:center;
-        }   
-        html{
-            padding:80px 0 50px 0;
-        }
-        html,body{
-            height:100%;
-        }
-        
-        @media (: 767.98px) {
-            
-        }
-        br{
-            width:0;
-        }
-
 	</style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 	
@@ -162,15 +121,15 @@
     </form>
 
     <!-- PASS RESET FORM MEME -->
-    <form id="passwordResetForm" method="post" action="do_password_reset.php" class="fields pwreset-fields">
+    <form id="passwordResetForm" method="post" action="db_password_reset.php" class="fields pwreset-fields">
         <label>Ksgyf-email</label><br>
         <input type="text" name="email">
         <br><br>
 
-        <input type="submit" value="Skicka email">
+        <input type="submit" value="Skicka återställningslänk">
     </form>
 
-    <br>
+    <br><br><br>
 
     <div class="fields login-fields">
         <a href="#" id="signup">Registrera ett konto</a>
