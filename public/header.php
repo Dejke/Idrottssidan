@@ -14,13 +14,19 @@
     font-size: 1em;
 
     width: 200px;
-    height: auto;
+    min-height: auto;
 
     background-color: green;
     display: none;
 
     position: relative;
     left:-150px;
+    top: 10px;
+    z-index: 10;
+  }
+  .drop *{
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
   }
 
 </style>
@@ -38,11 +44,16 @@
     </a>
 
   <div class="user navbar-nav ml-auto">
+
     <i class="fas fa-user"></i>
+
     <div class="drop h4 text-center">
-      <span class="p2">HALLÅs</span><br>
-      <a href="db_log_out.php">Logga ut</a>
+
+      <span class="">HALLÅs</span><br>
+      <a class="" href="db_log_out.php">Logga ut</a>
+
     </div>
+
   </div>
   
 
@@ -58,13 +69,14 @@
       </div>
     </div>
     -->
+    
 
 </nav>
 <script type="text/javascript">
   
   $(".user i").click(function(){
 
-    $(".drop").slideToggle(100);
+    $(".drop").fadeToggle(100);
 
   });
 
