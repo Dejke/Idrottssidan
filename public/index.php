@@ -6,7 +6,7 @@
         exit;
     }
     
-    //We be testing, yo chiidslllaisdsddowkdwdjadwadsdiow*/
+    //We be testing, yo chiidslllaisdsddowkdwdjadwaVAD I SJÄLVASTE FANdsdiow*/
     include "sql_setup.php";
 ?>
 
@@ -31,9 +31,9 @@
     <div class="activities container-fluid text-center">
         <span class="text-dark h1" style="border-bottom: 1px solid black;">Aktiviteter</span>
         <?
-            // HÄMTA AKTIVITETE
+            // HÄMTA AKTIVITEdTE
             if ($stmt = $mysqli->prepare("
-                SELECT ACTIVITIES.NAME, ACTIVITIES.LOCATION, ACTIVITIES.TIME
+                SELECT ACTIVITIES.NAME, ACTIVITIES.LOCATION, ACTIVITIES.TIME, ACTIVITIES.ID
                 FROM ACTIVITIES 
                 INNER JOIN ACTIVITY_PAIR
                 ON ACTIVITIES.ID = ACTIVITY_PAIR.ACTIVITY_ID
@@ -47,16 +47,18 @@
                 $stmt->bind_param("i", $_SESSION["USER"]);
                 $stmt->execute();
 
-                $stmt->bind_result($name, $location, $time);
+                $stmt->bind_result($name, $location, $time, $id);
 
                 while($stmt->fetch()){
                     echo 
                     '
+                        <a href="activity.php?id='.$id.'">
                         <div class="activity text-center p-4 row justify-content-around text-dark">
                             <span class="col-lg-4 col-md-4 col-sm-4 h3">'.$name.'</span>
                             <span class="col-lg-4 col-md-4 col-sm-4 h3">'.$location.'</span>
                             <span class="col-lg-4 col-md-4 col-sm-4 h3">'.$time.'</span>
                         </div>
+                        </a>
                     ';
                 }
 
