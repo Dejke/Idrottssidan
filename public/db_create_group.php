@@ -1,5 +1,4 @@
 <?
-	// 1post-LKteInf18 <- Lmao viktigt lösenord
 	session_start();
 
     if(!isset($_SESSION["USER"])){
