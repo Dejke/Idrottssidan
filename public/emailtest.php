@@ -37,7 +37,7 @@
 	$mail->SMTPSecure = "tls";                 // sets the prefix to the server
 	$mail->Port		  = 587;
 	$mail->Username   = "noreply@kaggteknik.se";  // username
-	$mail->Password   = "bumbibjorn3000";          // password
+	$mail->Password   = "";          // password
 	
   
 
