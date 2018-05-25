@@ -73,9 +73,9 @@
                     $mail->Username   = "noreply@kaggteknik.se";  // username
                     $mail->Password   = $SECRET["mail_password"]; 
 
-                    $mail->SetFrom('noreply@kaggteknik.se', utf8_decode('Lars Kagg'));
-
-                    $mail->MsgHTML("http://kasperdejke.kaggteknik.se/Idrottssidan/");
+	                $mail->SetFrom('noreply@kaggteknik.se', 'Lasse Kagg');
+	                $mail->AddReplyTo("noreply@kaggteknik.se","Lasse Kagg");
+                    $mail->MsgHTML($_SERVER["HTTP_HOST"]."/password_change.php?str=".$key);
                     $mail->AddAddress($_POST["email"]);
 
                     if(!$mail->Send()) {
@@ -84,7 +84,6 @@
                         header("Location:register_land_page.php");
                         exit;
                     }
-                    
                 }
             }
         }

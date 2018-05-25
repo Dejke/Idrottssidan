@@ -31,18 +31,18 @@
 
 					header("Location: signIn.php?message=invalidlogin");
 					exit;
-
 				}
-
+			}
+			else{
+				header("Location: signIn.php?message=invalidlogin");
+				exit;
 			}
 
 		}
 
 	} else {
-
 		header("Location: signIn.php?message=invalidlogin");
 		exit;
-
 	}
 
 ?>
