@@ -32,7 +32,7 @@
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="index">
     <div style= "
                     background:url('images/logo.png');
                     width: 90px;

@@ -40,26 +40,58 @@
                 	echo $time."<br>";
                 }
 
+                $stmt->close();
+
+                $userId = $_SESSION["USER"];
+                $activityId = $_GET["id"];
+
                 // get groups or students
                 if ($groupSize > 1){
 
-                	// Create group button
-                	echo '
 
-                	<form method="post" action="db_create_group.php">
-				        <input type="hidden" name="userId" value="'.$_SESSION["USER"].'">
-				        <input type="hidden" name="activityId value="'.$_GET["id"].'">
-				        <input type="hidden" name="groupSize value="'.$groupSize.'">
-				        <input type="submit" value="Skapa ett lag">
-				    </form><br>
+                	if ($stmt = $mysqli->prepare("
 
-                	';
+		                SELECT USERS.GROUP_ID, GROUPS.ID
+		                FROM USERS
+		                INNER JOIN GROUPS
+		                ON GROUPS.ID = USERS.GROUP_ID
+		                WHERE USERS.ID = ? AND GROUPS.ACTIVITY_ID = ?
+
+		            ")){
+
+                		$stmt->bind_param("ii", $_SESSION["USER"], $_GET["id"]);
+                		$stmt->execute();
+
+                		$stmt->bind_result($tempUserId);
+                		$button = true;
+
+                		while($stmt->fetch()){
+
+                			if ($tempUserId == $_SESSION["USER"])
+                				$button = false;
+
+                		}
+
+                		if ($button){
+                			echo '
+
+		                	<form method="post" action="db_create_group.php">
+						        <input type="hidden" name="userId" value="'.$userId.'">
+						        <input type="hidden" name="activityId" value="'.$activityId.'">
+						        <input type="hidden" name="groupSize" value="'.$groupSize.'">
+						        <input type="submit" value="Skapa ett lag">
+						    </form><br>
+
+                			';
+                		}
+
+	            	}
 
                 	// Show groups
 	                if ($stmt = $mysqli->prepare("
 		                SELECT GROUPS.ID
 		                FROM GROUPS 
-		                WHERE ACTIVITY_ID = ?
+		                WHERE GROUPS.ACTIVITY_ID = ?
 	            	")){
 
 	                	$stmt->bind_param("i", $_GET["id"]);
@@ -67,11 +99,13 @@
 
                 		$stmt->bind_result($group);
 
-                		while($stmt->fetch()){
+                		// GROUP BUTTó
+
+                		while($stmt->fetch()){ //HJÄÄÄÄÄÄÄÄÄÄLP
                 			echo $group."<br>";
                 		}
 
-	            	}
+	            	} else echo $mysqli->error;
 
 	        	} else { // IF groupsize is less than 1
 
@@ -79,9 +113,9 @@
                 	echo '
                 	
                 	<form method="post" action="db_create_group.php">
-				        <input type="hidden" name="userId" value="'.$_SESSION["USER"].'">
-				        <input type="hidden" name="activityId value="'.$_GET["id"].'">
-				        <input type="hidden" name="groupSize value="'.$groupSize.'">
+				        <input type="hidden" name="userId" value="'.$userId.'">
+				        <input type="hidden" name="activityId" value="'.$activityId.'">
+				        <input type="hidden" name="groupSize" value="'.$groupSize.'">
 				        <input type="submit" value="Gå med i aktivitet">
 				    </form><br>
 
@@ -91,7 +125,7 @@
 		                SELECT USERS.FIRST_NAME
 		                FROM USERS
 		                INNER JOIN GROUPS
-		                ON GROUPS.ACTIVITY_ID = ACTIVITIES.ID
+		                ON USERS.GROUP_ID = GROUPS.ID
 		                WHERE GROUPS.ACTIVITY_ID = ?
 	            	")){
 
@@ -104,7 +138,7 @@
                 			echo $fName."<br>";
                 		}
 
-	            	}	        		
+	            	} else echo"AYYA";        		
 
 	        	}
 
