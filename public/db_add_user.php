@@ -2,7 +2,7 @@
 
 	include "sql_setup.php";
 
-    if ($_POST["email"] && $_POST["password"] && $_POST["fname"] && $_POST["lname"]){
+    if ($_POST["email"] && $_POST["password"]){
 
     	if ($stmt = $mysqli->prepare("
 
@@ -52,12 +52,7 @@
     	}
 
 
-    } else {
-
-    	header("Location: signIn.php?message=missinginfo");
-    	exit;
-
-    }
+    } else echo "sorry fam";
 
 	$mysqli->close();
 
