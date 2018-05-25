@@ -20,6 +20,16 @@
         
         .activity{
             border-bottom: 1px solid black;
+            text-decoration: none !important;
+        }
+
+        .activity:hover{
+            background-color: rgb(0, 76, 134);
+            color: white !important;
+            text-decoration: none !important;
+        }
+        .activity *:hover{
+            
         }
 
     </style>

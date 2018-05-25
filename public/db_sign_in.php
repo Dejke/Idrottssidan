@@ -1,3 +1,4 @@
+
 <?
 	session_start();
 	include "sql_setup.php";
@@ -44,5 +45,4 @@
 		header("Location: signIn.php?message=invalidlogin");
 		exit;
 	}
-
 ?>

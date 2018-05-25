@@ -1,5 +1,8 @@
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <style type="text/css">
 
@@ -10,6 +13,8 @@
   .user i{
     font-size: 3em;
   }
+
+  /*
   .drop{
     font-size: 1em;
 
@@ -28,13 +33,14 @@
     margin-top: 10px !important;
     margin-bottom: 10px !important;
   }
+  */
 
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="index">
     <div style= "
-                    background:url('images/logo.png');
+                    background:url('images/logo.svg');
                     width: 90px;
                     height:108px;
                     background-size:cover;
@@ -43,6 +49,7 @@
             alt = "Lars Kagg"></div>
     </a>
 
+  <!--
   <div class="user navbar-nav ml-auto">
 
     <i class="fas fa-user"></i>
@@ -55,20 +62,21 @@
     </div>
 
   </div>
-  
+  -->
 
-    <!--
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button">
-        Dropdown button
-      </button>ko
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>s
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
+  <div class="btn-group ml-auto" style="float: right;">
+    <button type="button" class="btn btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #3c5fdf; border-color: #3c5fdf; border-radius: 4px ">
+      <i class="fas fa-user"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right mt-0">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
     </div>
-    -->
+  </div>
+  </nav>
     
 
 </nav>

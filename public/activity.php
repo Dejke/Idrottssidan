@@ -62,15 +62,14 @@
                 		$stmt->bind_param("ii", $_SESSION["USER"], $_GET["id"]);
                 		$stmt->execute();
 
-                		$stmt->bind_result($tempUserId);
+                		$stmt->bind_result($tempUserGroupId, $tempGroupId);
                 		$button = true;
 
-                		while($stmt->fetch()){
-
-                			if ($tempUserId == $_SESSION["USER"])
-                				$button = false;
-
+                		if ($stmt->fetch()){
+                			if ($tempGroupId == $tempUserGroupId) $button = false;
                 		}
+
+                		$stmt->close();
 
                 		if ($button){
                 			echo '
@@ -83,6 +82,8 @@
 						    </form><br>
 
                 			';
+                		} else {
+                			echo "Du är redan med boi<br>";
                 		}
 
 	            	}
@@ -99,9 +100,7 @@
 
                 		$stmt->bind_result($group);
 
-                		// GROUP BUTTó
-
-                		while($stmt->fetch()){ //HJÄÄÄÄÄÄÄÄÄÄLP
+                		while($stmt->fetch()){
                 			echo $group."<br>";
                 		}
 
@@ -110,16 +109,44 @@
 	        	} else { // IF groupsize is less than 1
 
 	        		// Join ACtivity
-                	echo '
-                	
-                	<form method="post" action="db_create_group.php">
-				        <input type="hidden" name="userId" value="'.$userId.'">
-				        <input type="hidden" name="activityId" value="'.$activityId.'">
-				        <input type="hidden" name="groupSize" value="'.$groupSize.'">
-				        <input type="submit" value="Gå med i aktivitet">
-				    </form><br>
+                	if ($stmt = $mysqli->prepare("
 
-                	';
+		                SELECT USERS.GROUP_ID, GROUPS.ID
+		                FROM USERS
+		                INNER JOIN GROUPS
+		                ON GROUPS.ID = USERS.GROUP_ID
+		                WHERE USERS.ID = ? AND GROUPS.ACTIVITY_ID = ?
+
+		            ")){
+
+                		$stmt->bind_param("ii", $_SESSION["USER"], $_GET["id"]);
+                		$stmt->execute();
+
+                		$stmt->bind_result($tempUserGroupId, $tempGroupId);
+                		$button = true;
+
+                		if ($stmt->fetch()){
+                			if ($tempGroupId == $tempUserGroupId) $button = false;
+                		}
+
+                		$stmt->close();
+
+                		if ($button){
+                			echo '
+
+		                	<form method="post" action="db_create_group.php">
+						        <input type="hidden" name="userId" value="'.$userId.'">
+						        <input type="hidden" name="activityId" value="'.$activityId.'">
+						        <input type="hidden" name="groupSize" value="'.$groupSize.'">
+						        <input type="submit" value="Gå med i aktivitet">
+						    </form><br>
+
+                			';
+                		} else {
+                			echo "Du är redan med boi<br>";
+                		}
+
+	            	}
 
 					if ($stmt = $mysqli->prepare("
 		                SELECT USERS.FIRST_NAME
