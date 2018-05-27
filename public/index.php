@@ -17,7 +17,11 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <style type="text/css">
-        
+            
+        body{
+            overflow: hidden;
+        }
+
         .activity{
             border-bottom: 1px solid black;
             text-decoration: none !important;
