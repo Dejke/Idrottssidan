@@ -10,14 +10,31 @@
 
 	if ($_POST["userId"] && $_POST["activityId"] && $_POST["groupSize"]){
 
+
+        // Delete old group
+        if ($stmt = $mysqli->prepare("
+
+            DELETE FROM GROUPS 
+            WHERE GROUPS.CREATOR_ID = ?
+
+        ")){
+
+            $stmt->bind_param("i", $_SESSION["USER"]);
+            $stmt->execute();
+            $stmt->close();
+
+        }
+
+
+        // Create new group
 		if ($stmt = $mysqli->prepare("
 
-    		INSERT INTO GROUPS (ACTIVITY_ID, MAX_MEMBERS)
-    		VALUES (?, ?)
+    		INSERT INTO GROUPS (ACTIVITY_ID, MAX_MEMBERS, CREATOR_ID)
+    		VALUES (?, ?, ?)
 
     	")){
 
-			$stmt->bind_param("ii", $_POST["activityId"], $_POST["groupSize"]);
+			$stmt->bind_param("iii", $_POST["activityId"], $_POST["groupSize"], $_SESSION["USER"]);
 
 			$stmt->execute();
     		$stmt->close();	
