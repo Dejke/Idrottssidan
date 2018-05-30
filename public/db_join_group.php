@@ -18,8 +18,6 @@
 
     	")){
 
-    		echo "hej";
-
     		$stmt->bind_param("i", $_SESSION["USER"]);
             $stmt->execute();
 
@@ -35,8 +33,6 @@
 
     	")){
 
-    		echo "hej2";
-
     		$stmt->bind_param("ii", $_POST["group_id"], $_SESSION["USER"]);
             $stmt->execute();
 
@@ -45,7 +41,8 @@
 
     }
 
-    //header('Location: ' . $_SERVER['HTTP_REFERER']);
-    //exit;
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
+    //memeMeme
 
 ?>

@@ -90,18 +90,20 @@
 
                 	// Show groups
 	                if ($stmt = $mysqli->prepare("
-		                SELECT GROUPS.ID
+		                SELECT USERS.FIRST_NAME, GROUPS.ID
 		                FROM GROUPS 
+		                INNER JOIN USERS
+		                ON GROUPS.CREATOR_ID = USERS.ID
 		                WHERE GROUPS.ACTIVITY_ID = ?
 	            	")){
 
 	                	$stmt->bind_param("i", $_GET["id"]);
                 		$stmt->execute();
 
-                		$stmt->bind_result($group);
+                		$stmt->bind_result($name, $group);
 
                 		while($stmt->fetch()){
-                			echo $group."<br>";
+                			echo "<a href='group?id=".$group."'>".$name."</a><br>";
                 		}
 
 	            	} else echo $mysqli->error;

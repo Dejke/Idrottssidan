@@ -82,7 +82,7 @@
             		echo '
 
             			<form method="post" action="db_join_group.php">
-							<input type="hidden" name="group_id" value="'.$group_id.'">
+							<input type="hidden" name="group_id" value="'.$_GET['id'].'">
 							<input type="submit" value="Joina grupp boi">
 						</form>
 
