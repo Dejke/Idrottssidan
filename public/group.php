@@ -6,7 +6,7 @@
         exit;
     }
     
-    //We be testing, yo chiidslllaisdsddowkdwdjadwaVAD I SJÄLVASTE FANdsdiow*/
+    //We be testing, yo chiidslllaisdsddodwdwwkdwdjadwaVAD I SJÄLVASTE FANdsdidwdwow*/
     include "sql_setup.php";
 ?>
 <!DOCTYPE html>
@@ -18,7 +18,6 @@
 <body>
 
 	<?include "header.php";?>
-
 
 	<div class="members">
 		
@@ -41,9 +40,11 @@
 
                 	while ($stmt->fetch()) {
                 		
-                		echo $fname." ".$lname." ".$programme." ".$grade." ".$letter."<br>";
+                		echo $fname." ".$lname."".$programme."".$grade."".$letter."<br>";
 
                 	}
+
+                	$stmt->close();
 
     			} else {
 
@@ -56,6 +57,44 @@
 		?>
 
 	</div>
+
+	<?
+
+		if ($stmt = $mysqli->prepare("
+
+            SELECT USERS.GROUP_ID
+            FROM USERS
+            WHERE USERS.ID = ?
+
+        ")){
+
+			$stmt->bind_param("i", $_SESSION["USER"]);
+            $stmt->execute();
+
+            $stmt->bind_result($group_id);
+
+            echo "does work?";
+
+            if ($stmt->fetch()){
+
+            	if ($group_id != $_GET["id"]){
+
+            		echo '
+
+            			<form method="post" action="db_join_group.php">
+							<input type="hidden" name="group_id" value="'.$group_id.'">
+							<input type="submit" value="Joina grupp boi">
+						</form>
+
+            		';
+
+            	}
+
+            }
+
+        }
+
+	?>
 
 </body>
 </html>

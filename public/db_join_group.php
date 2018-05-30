@@ -12,9 +12,7 @@
     	if ($stmt = $mysqli->prepare("
 
     		DELETE FROM GROUPS
-    		INNER JOIN USERS
-    		ON GROUPS.ID = USERS.GROUP_ID
-    		WHERE USERS.ID = ?
+    		WHERE GROUPS.CREATOR_ID = ?
 
     	")){
 
