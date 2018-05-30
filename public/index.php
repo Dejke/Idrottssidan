@@ -32,8 +32,8 @@
             color: white !important;
             text-decoration: none !important;
         }
-        .activity *:hover{
-            
+        a:hover{
+            text-decoration: none !important;    
         }
 
     </style>

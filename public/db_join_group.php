@@ -7,6 +7,8 @@
         exit;
     }
 
+    include "sql_setup.php";
+
     if($_POST["group_id"]){
 
     	if ($stmt = $mysqli->prepare("
@@ -15,6 +17,8 @@
     		WHERE GROUPS.CREATOR_ID = ?
 
     	")){
+
+    		echo "hej";
 
     		$stmt->bind_param("i", $_SESSION["USER"]);
             $stmt->execute();
@@ -31,16 +35,17 @@
 
     	")){
 
+    		echo "hej2";
+
     		$stmt->bind_param("ii", $_POST["group_id"], $_SESSION["USER"]);
             $stmt->execute();
 
             $stmt->close();
-
        	}
 
     }
 
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
+    //header('Location: ' . $_SERVER['HTTP_REFERER']);
+    //exit;
 
 ?>
