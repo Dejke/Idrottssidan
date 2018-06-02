@@ -44,7 +44,9 @@
                     width: 90px;
                     height:108px;
                     background-size:cover;
-                    margin: -10px 0 -40px 0;
+                    margin: -20px 0 -40px 0;
+                    position: relative;
+                    top: 15px;
                 "
             alt = "Lars Kagg"></div>
     </a>
