@@ -20,7 +20,7 @@
 
 	<?include "header.php";?>
 
-	hihihaha
+	EXPLAIN DansGame
 
 </body>
 </html>

@@ -6,7 +6,7 @@
         exit;
     }
     
-    //We be testing, yo chiidslllaisdsddowkdwdjadwadsdiow*/
+    //We be testing, yo chiidslllaisdsddosdfsdfwkdwdjadwadsdiow*/
     include "sql_setup.php";
 ?>
 <!DOCTYPE html>
