@@ -38,8 +38,13 @@
         <?echo $firstFieldsClass; ?>{
             display: inline-block;
         }
-        #message{
+        .good-message{
+            color: green;
         }
+        .bad-message{
+            color: red;
+        }
+
 	</style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -277,6 +282,7 @@
         $("#message").remove();
     }
 
-</script>
+    /**jag HATAR cache */
 
+</script>
 </html>

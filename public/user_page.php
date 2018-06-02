@@ -6,7 +6,7 @@
         exit;
     }
     
-    //We be testing, yo chiidslllaisdsddowkdwdjadwadsdiow*/
+    //We be testing, yo chiidslllaisdsddowkawdasdawddwdjadwadsdiow*/
     include "sql_setup.php";
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
 
 	<?include "header.php";?>
 
-	hihi
+	EXPLAIN DansGame
 
 </body>
 </html>
