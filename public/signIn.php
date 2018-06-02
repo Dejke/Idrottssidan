@@ -38,9 +38,13 @@
         <?echo $firstFieldsClass; ?>{
             display: inline-block;
         }
-        #message{
-            color:lightblue;
+        .good-message{
+            color: green;
         }
+        .bad-message{
+            color: red;
+        }
+
 	</style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -53,7 +57,7 @@
 
     <div id="logo"></div>
 
-    <span id = "message">
+    <span class="good-message">
         <?
         if($_GET["message"]){
             switch($_GET["message"]){
@@ -67,6 +71,7 @@
                     break;
                 case "existingemail":
                     echo "Det finns redan ett konto med emailadressen som du fyllde i.";
+
                     break;
                 case "accountcreated":
                     echo "Ditt konto har skapats. Du kan nu logga in.";
@@ -83,6 +88,7 @@
             echo "<br>\n<br>";
         }
         
+        // why doe?
         echo $_GET["message"];
         
         ?>
