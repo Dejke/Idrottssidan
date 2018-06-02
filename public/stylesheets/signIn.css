@@ -8,19 +8,29 @@ body{
 }
 #logo{
     position:absolute;
-    top:-50px;
-    left: calc(50% - 50px);
-    width: 100px;
-    height: 120px;
+    top: 15px;
+    left: calc(50% - 65px);
+    width: 130px;
+    height: 156px;
     background:url("../images/logo.svg");/*asdhifasdoifasidufho*/
     background-size:cover;
 }
 .containz{
-    background-color: lightgray;
+    background-color:  #e5edf2;
     width: 300px;
     margin: 0 auto;
     text-align:center;
-    padding: 15px;
-    padding-top: 80px;
+    padding: 25px;
+    padding-top: 160px;
     position: relative;
+    border-radius: 5px;
+}
+
+.input-group-prepend{
+    justify-content:center;
+    width: 40px;
+}
+
+form{
+    width:100%;
 }

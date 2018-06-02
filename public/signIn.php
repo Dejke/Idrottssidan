@@ -13,6 +13,8 @@
 	<title>Logga in</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
     <link rel="stylesheet" href="stylesheets/signIn.css">
 
     <?
@@ -37,12 +39,6 @@
         }
         <?echo $firstFieldsClass; ?>{
             display: inline-block;
-        }
-        .good-message{
-            color: green;
-        }
-        .bad-message{
-            color: red;
         }
 
 	</style>
@@ -130,36 +126,51 @@
 
     <!-- LOG IN FORM MEME (VAD I HEL VETE DEN LÄGGER TILL EN BR SOM FÖRSVINNER OM MAN KLICKAR PÅ EN LÄNK OCH SEN TILLBAKA WTff??!?!?!?+ -->
     <form id="loginForm" method="post" action="db_sign_in.php" class="fields login-fields">
-        <label>Ksgyf-email</label><br>
-		<input type="text" name="email">
-        <br><br>
-		<label>Lösenord</label><br>
-		<input type="password" name="password">
-        <br><br>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-at"></i></div>
+            </div>
 
-        <input type="submit" value="Logga in">
+            <input type="text" name="email" class="form-control" placeholder = "Ksgyf-email">
+        </div>
+
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-unlock"></i></div>
+            </div>
+            <input type="password" name="password" class="form-control">
+        </div>
+
+        <input type="submit" value="Logga in" class="form-control">
     </form>
 
     <!-- SIGN UP FORM MEME -->
     <form id="signupForm" method="post" action="db_add_user.php" onsubmit="return validate(this)" class="fields signup-fields">
 
 		<span id="email-warning"></span>
-		<label>Ksgyf-email</label><br>
-		<input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en mailadress från ksgyf." onfocusout="studentMailCheck(this);"><br>
+        
+        <div class="form-group">
+            <label>Ksgyf-email</label>
+            <input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en mailadress från ksgyf." onfocusout="studentMailCheck(this);" class="form-control">
 
-        <label>Upprepa ksgyf-email</label><br>
-        <input type="text" name="email2"><br><br>
+            <label>Upprepa ksgyf-email</label><br>
+            <input type="text" name="email2" class="form-control">
+        </div>
 
+        <div class="form-group">
+            <span id="password-warning"></span>
+            <span>Lösenord</span>
+            <input type="password" name="password" class="form-control">
 
-        <span id="password-warning"></span>
-		<span>Lösenord</span><br>
-		<input type="password" name="password"><br>
+            <label>Upprepa lösenord</label>
+            <input type="password" name="password2" class="form-control">
+        </div>
 
-        <label>Upprepa lösenord</label><br>
-        <input type="password" name="password2"><br><br>
+        <div class="form-group row">
 
+        </div>
         <label>Klass:</label>
-        <select name="programme" class="classFields">
+        <select name="programme" class="classFields form-control">
             <option value="TEACHER"></option>
             <option value="BA">BA</option>
             <option value="EE">EE</option>
@@ -171,7 +182,7 @@
             <option value="TE">TE</option>
             <option value="VF">VF</option>
         </select>
-        <select name="grade" class="classFields">
+        <select name="grade" class="classFields form-control">
             <option value="TEACHER"></option>
             <?
 
@@ -190,7 +201,7 @@
             ?>
         </select>
 
-        <select name = "letter" class = "classFields">
+        <select name = "letter" class = "classFields form-control">
             <option value="TEACHER"></option>
                 <?
                     for($i = 65; $i <= 65+12; $i++){
@@ -201,17 +212,18 @@
         </select>
         <br><br>
         <label>Förnamn</label><br>
-        <input type="text" name="fname" max="64">
+        <input type="text" name="fname" max="64" class="form-control">
         <br>
         <label>Efternamn</label>
         <br>
-        <input type="text" name="lname" max="64">
+        <input type="text" name="lname" max="64"class="form-control">
         <br><br>
-        <input type="submit" value="Registrera">
+        <input type="submit" value="Registrera"class="form-control">
     </form>
 
     <!-- PASS RESET FORM MEME -->
     <form id="passwordResetForm" method="post" action="db_password_reset.php" class="fields pwreset-fields">
+        
         <label>Ksgyf-email</label><br>
         <input type="text" name="email">
         <br><br>
