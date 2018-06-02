@@ -16,17 +16,28 @@
                 SET PASSWORD = ? 
                 WHERE ID = ?
         ")){
-            $stmt->bind_param("si", password_hash($_POST["password"], PASSWORD_BCRYPT), $_SESSION["userChangeId"]);
-            echo "mem1<br>";
+            $stmt->bind_param("si", password_hash($_POST["password"], PASSWORD_BCRYPT), $_SESSION["pwChangeId"]);
             $stmt->execute();
-            echo "mem2<br>";
 
             $stmt->close();
-            echo "mem3<br>";
+
             session_destroy();
-            echo "mem4<br>";
-            header("Location: signIn.php?message=passwordchanged");
-            exit;
+            if($stmt = $mysqli->prepare(
+                "
+                    DELETTE FROM PASSWORD_RESETS 
+                        WHERE USER_ID = ?
+                "
+            )){
+                $stmt->bind_param("i", $_SESSION["pwChangeId"]);
+                $stmt->execute();
+                $stmt->close();
+                header("Location: signIn.php?message=passwordchanged");
+                exit;
+            }
+            else{
+                echo "something broke";
+            }
+                
         }
         else{
             echo "tror jag dog";
@@ -86,7 +97,7 @@
                 $_SESSION["pwChangeId"] = $id;
             if($bool):
             ?>
-                <form method = "post" action="<?$_SERVER["PHP_SELF"]?>">
+                <form method = "post" action="<?$_SERVER["PHP_SELF"]?>" onsubmit="return validate(this)">
                     <label>Nytt lösenord</label><br>
                     <input type="password" name="password" id="pw1"><br><br>
                     <label>Upprepa nytt lösenord</label><br>
@@ -106,5 +117,13 @@
         }
     ?>
     </div>
+
+    <script>
+        function validate(){
+            if(document.getElementById("pw1").value == document.getElementById("pw2").value){
+                return true;
+            }
+        }
+    </script>
 </body>
 </html>
