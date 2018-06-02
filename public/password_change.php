@@ -52,6 +52,8 @@
     <title>Byt lösenord</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/signIn.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
     
 </head>
 
@@ -96,11 +98,27 @@
             if($bool):
             ?>
                 <form method = "post" action="<?$_SERVER["PHP_SELF"]?>" onsubmit="return validate(this)">
-                    <label>Nytt lösenord</label><br>
-                    <input type="password" name="password" id="pw1"><br><br>
-                    <label>Upprepa nytt lösenord</label><br>
-                    <input type="password" id="pw2"><br><br>
-                    <input type="submit" value="Bekräfta">
+                    <label class = "sr-only">Nytt lösenord</label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-unlock"></i>
+                            </div>
+                        </div>
+                        <input type="password" name="password" id="pw1" class="form-control" placeholder = "Nytt Lösenord">
+
+                    </div>
+
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-unlock"></i>
+                            </div>
+                        </div>
+                        <label class="sr-only">Upprepa nytt lösenord</label>
+                        <input type="password" id="pw2" placeholder = "Upprepa lösenord" class= "form-control">
+                    </div>
+                    <input type="submit" value="Bekräfta" class = "form-control">
                 </form>
             <?
             else:
