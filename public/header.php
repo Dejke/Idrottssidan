@@ -23,6 +23,7 @@
 
   .btn:focus i{
     text-shadow: 0px 0px 4px #004788;
+    border-
   }
 
   .btn:focus, .btn:active:focus, .btn.active:focus{
@@ -60,24 +61,6 @@
 
 </nav>
 <script type="text/javascript">
-
-  $(function(){
-    // ADD SLIDEDOWN ANIMATION TO DROPDOWN //
-    $('.dropdown').on('show.bs.dropdown', function(e){
-        $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
-    });
-
-    // ADD SLIDEUP ANIMATION TO DROPDOWN //
-    $('.dropdown').on('hide.bs.dropdown', function(e){
-        e.preventDefault();
-        $(this).find('.dropdown-menu').first().stop(true, true).slideUp(400, function(){
-            //On Complete, we reset all active dropdown classes and attributes
-            //This fixes the visual bug associated with the open class being removed too fast
-            $('.dropdown').removeClass('open');
-            $('.dropdown').find('.dropdown-toggle').attr('aria-expanded','false');
-        });
-    });
-});
   
   /*
   $(".user i").click(function(){
