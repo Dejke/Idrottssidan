@@ -14,6 +14,15 @@
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/signIn.css">
+
+    <?
+        $firstFieldsClass = ".login-fields";
+
+        if($_GET["form"]){
+            $firstFieldsClass = ".".$_GET["form"]."-fields";
+        }
+    ?>
+
     <style type="text/css">
 		#email-warning{
             display: none;
@@ -23,21 +32,65 @@
             display: none;
 			color: red;
 		}
-        .signup-fields{
+        .fields{
             display:none;
         }
-        .pwreset-fields{
-            display:none;
+        <?echo $firstFieldsClass; ?>{
+            display: inline-block;
+        }
+        #message{
+            color:lightblue;
         }
 	</style>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 	
 </head>
 <body>
+
+
 <div class="containz">
 
     <div id="logo"></div>
 
+    <span id = "message">
+        <?
+        if($_GET["message"]){
+            switch($_GET["message"]){
+                case "checkemail":
+                    echo 
+                    "Vi har skickat ett e-mail till din ksgyf-adress med en länk där du kan återställa ditt lösenord<br>\n
+                    Om du inte ser mailet i inkorgen eller skräpkorgen inom 5 minuter, så kan du försöka igen.";
+                    break;
+                case "noexistemail":
+                    echo "Det finns inget konto kopplat till mailadressen du fyllde i.";
+                    break;
+                case "existingemail":
+                    echo "Det finns redan ett konto med emailadressen som du fyllde i.";
+                    break;
+                case "accountcreated":
+                    echo "Ditt konto har skapats. Du kan nu logga in.";
+                    break;
+                case "invalidlogin":
+                    echo "Felaktig mailadress eller lösenord.";
+                    break;
+                case "passwordchanged":
+                    echo "Ditt lösenord har ändrats.";
+                    break;
+                default:
+                    echo $_get["message"];
+            }
+            echo "<br>\n<br>";
+        }
+        
+        echo $_GET["message"];
+        
+        ?>
+        
+        
+        <br>
+        <br>
+    </span>
     <!-- LOG IN FORM MEME (VAD I HEL VETE DEN LÄGGER TILL EN BR SOM FÖRSVINNER OM MAN KLICKAR PÅ EN LÄNK OCH SEN TILLBAKA WTff??!?!?!?+ -->
     <form id="loginForm" method="post" action="db_sign_in.php" class="fields login-fields">
         <label>Ksgyf-email</label><br>
@@ -146,8 +199,10 @@
     
 </div>
 </body>
-<script type="text/javascript">
 
+
+<script type="text/javascript">
+ 
     function validate(form){
         var e = form.elements;
         var passwordMatch = false;
@@ -214,9 +269,6 @@
         $(".fields").css("display","none");
 
         switch(newForm){
-            case "login":
-                $(".login-fields").css("display", "inline-block");
-                break;
             case "signup":
                 $(".signup-fields").css("display", "inline-block");
                 break;
@@ -224,7 +276,7 @@
                 $(".pwreset-fields").css("display", "inline-block");
                 break;
             default:
-                Console.error("newForm existerar inte.");
+                $(".login-fields").css("display", "inline-block");
                 break;
         }
     }

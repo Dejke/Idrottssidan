@@ -100,7 +100,7 @@
         }
         else{
             //email is ZUCC 
-            header("Location: signIn.php?message=noexistemail");
+            header("Location: signIn.php?form=pwreset&message=noexistemail");
             exit;
         }
     }  
