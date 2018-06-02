@@ -10,7 +10,7 @@
     
     include "sql_setup.php";
 
-    if($_POST["password"]&&$_SESSION["userChangeId"]){
+    if($_POST["password"]&&$_SESSION["pwChangeId"]){
         if($stmt =  $mysqli->prepare("
             UPDATE USERS 
                 SET PASSWORD = ? 

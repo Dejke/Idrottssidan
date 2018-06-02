@@ -39,7 +39,6 @@
             display: inline-block;
         }
         #message{
-            color:lightblue;
         }
 	</style>
 
@@ -53,23 +52,24 @@
 
     <div id="logo"></div>
 
-    <span id = "message">
-        <?
+    <?
+        
         if($_GET["message"]){
+            echo '<span id = "message">';
             switch($_GET["message"]){
                 case "checkemail":
                     echo 
-                    "Vi har skickat ett e-mail till din ksgyf-adress med en länk där du kan återställa ditt lösenord<br>\n
+                    "Vi har skickat ett e-mail till din ksgyf-adress med en länk där du kan återställa ditt lösenord.<br>\n
                     Om du inte ser mailet i inkorgen eller skräpkorgen inom 5 minuter, så kan du försöka igen.";
                     break;
                 case "noexistemail":
                     echo "Det finns inget konto kopplat till mailadressen du fyllde i.";
                     break;
                 case "existingemail":
-                    echo "Det finns redan ett konto med emailadressen som du fyllde i.";
+                    echo "Det finns redan ett konto med mailadressen som du fyllde i.";
                     break;
                 case "accountcreated":
-                    echo "Ditt konto har skapats. Du kan nu logga in.";
+                    echo "Ditt konto har skapats.";
                     break;
                 case "invalidlogin":
                     echo "Felaktig mailadress eller lösenord.";
@@ -78,19 +78,11 @@
                     echo "Ditt lösenord har ändrats.";
                     break;
                 default:
-                    echo $_get["message"];
+                    echo $_GET["message"];
             }
-            echo "<br>\n<br>";
+            echo "</span><br>\n";
         }
-        
-        echo $_GET["message"];
-        
-        ?>
-        
-        
-        <br>
-        <br>
-    </span>
+    ?>
     <!-- LOG IN FORM MEME (VAD I HEL VETE DEN LÄGGER TILL EN BR SOM FÖRSVINNER OM MAN KLICKAR PÅ EN LÄNK OCH SEN TILLBAKA WTff??!?!?!?+ -->
     <form id="loginForm" method="post" action="db_sign_in.php" class="fields login-fields">
         <label>Ksgyf-email</label><br>
@@ -108,7 +100,7 @@
 
 		<span id="email-warning"></span>
 		<label>Ksgyf-email</label><br>
-		<input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en emailadress från ksgyf." onfocusout="studentMailCheck(this);"><br>
+		<input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en mailadress från ksgyf." onfocusout="studentMailCheck(this);"><br>
 
         <label>Upprepa ksgyf-email</label><br>
         <input type="text" name="email2"><br><br>
@@ -215,7 +207,7 @@
 
         } else {
             document.getElementById('email-warning').style.display = "inline";
-            document.getElementById('email-warning').innerHTML = "Emailadresserna måste matcha<br>";
+            document.getElementById('email-warning').innerHTML = "Mailadresserna måste matcha<br>";
         }
 
         if (e["password"].value == e["password2"].value){
@@ -262,7 +254,10 @@
     $("#pwreset").click(function(){
         setForm("pwreset");
     });
+
+
     
+    /*dlerya nbytse */
 
     function setForm(newForm){
 
@@ -279,6 +274,7 @@
                 $(".login-fields").css("display", "inline-block");
                 break;
         }
+        $("#message").remove();
     }
 
 </script>
