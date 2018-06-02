@@ -11,6 +11,34 @@
 
     if($_POST["group_id"]){
 
+        // check for space boi
+        if ($stmt = $mysqli->prepare("
+
+            SELECT count(*), GROUPS.MAX_MEMBERS
+            FROM GROUPS
+            INNER JOIN USERS
+            ON USERS.GROUP_ID = GROUPS.ID
+            WHERE USERS.GROUP_ID = ?
+
+        ")){
+
+            $stmt->bind_param("i", $_POST["group_id"]);
+            $stmt->execute();
+
+            $stmt->bind_result($amount, $max_members);
+
+            if ($stmt->fetch()){
+                if ($amount == $max_members){
+
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    exit;
+
+                }
+            }
+
+        }
+
+        // Delete created group
     	if ($stmt = $mysqli->prepare("
 
     		DELETE FROM GROUPS

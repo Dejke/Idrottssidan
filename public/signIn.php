@@ -48,6 +48,42 @@
 	</style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script type="text/javascript">
+        
+        function setForm(newForm){
+
+            $(".fields").css("display","none");
+
+            switch(newForm){
+                case "signup":
+                    $(".signup-fields").css("display", "inline-block");
+                    break;
+                case "pwreset":
+                    $(".pwreset-fields").css("display", "inline-block");
+                    break;
+                default:
+                    $(".login-fields").css("display", "inline-block");
+                    break;
+            }
+            //$("#message").remove();
+        }
+
+        function putMessage(text, good, page){
+
+            setForm(page);
+
+            document.getElementById("message").innerHTML = ""+text+"<br><br>";
+
+            if (good){
+
+                document.getElementById("message").classList.remove("bad-message");
+                document.getElementById("message").classList.add("good-message");
+
+            }
+
+        }
+
+    </script>
 	
 </head>
 <body>
@@ -57,37 +93,41 @@
 
     <div id="logo"></div>
 
-    <?
-        
-        if($_GET["message"]){
-            echo '<span id = "message">';
-            switch($_GET["message"]){
-                case "checkemail":
-                    echo 
-                    "Vi har skickat ett e-mail till din ksgyf-adress med en länk där du kan återställa ditt lösenord.<br>\n
-                    Om du inte ser mailet i inkorgen eller skräpkorgen inom 5 minuter, så kan du försöka igen.";
-                    break;
-                case "noexistemail":
-                    echo "Det finns inget konto kopplat till mailadressen du fyllde i.";
-                    break;
-                case "existingemail":
-                    echo "Det finns redan ett konto med mailadressen som du fyllde i.";
-                    break;
-                case "accountcreated":
-                    echo "Ditt konto har skapats.";
-                    break;
-                case "invalidlogin":
-                    echo "Felaktig mailadress eller lösenord.";
-                    break;
-                case "passwordchanged":
-                    echo "Ditt lösenord har ändrats.";
-                    break;
-                default:
-                    echo $_GET["message"];
+        <span id="message" class="bad-message"></span>
+
+        <?
+            if ($_GET["message"]){
+                switch ($_GET["message"]) {
+                    case "checkemail":
+                        message("Vi har skickat ett e-mail till din ksgyf-adress med en länk där du kan återställa ditt lösenord.<br>\n
+                        Om du inte ser mailet i inkorgen eller skräpkorgen inom 5 minuter, så kan du försöka igen.", true, "login");
+                        break;
+                    case "noexistemail":
+                        message("Det finns inget konto kopplat till mailadressen du fyllde i.", false, "login");
+                        break;
+                    case "existingemail":
+                        message("Det finns redan ett konto med mailadressen som du fyllde i.", false, "signup");
+                        break;
+                    case "accountcreated":
+                        message("Ditt konto har skapats.", true, "login");
+                        break;
+                    case "invalidlogin":
+                        message("Felaktig mailadress eller lösenord.", false, "login");
+                        break;
+                    case "passwordchanged":
+                        message("Ditt lösenord har ändrats.", true, "login");
+                        break;
+                    default:
+                        message($_GET["message"], true, "login");
+                }
             }
-            echo "</span><br>\n";
-        }
-    ?>
+
+            function message($text, $good, $page){
+                echo "<script>putMessage('".$text."',".($good ? 'true' : 'false').",'".$page."')</script>";
+            }
+
+        ?>
+
     <!-- LOG IN FORM MEME (VAD I HEL VETE DEN LÄGGER TILL EN BR SOM FÖRSVINNER OM MAN KLICKAR PÅ EN LÄNK OCH SEN TILLBAKA WTff??!?!?!?+ -->
     <form id="loginForm" method="post" action="db_sign_in.php" class="fields login-fields">
         <label>Ksgyf-email</label><br>
@@ -179,7 +219,7 @@
         <input type="submit" value="Skicka återställningslänk">
     </form>
 
-    <br><br><br>
+    <br><br>
 
     <div class="fields login-fields">
         <a href="#" id="signup">Registrera ett konto</a>
@@ -259,28 +299,6 @@
     $("#pwreset").click(function(){
         setForm("pwreset");
     });
-
-
-    
-    /*dlerya nbytse */
-
-    function setForm(newForm){
-
-        $(".fields").css("display","none");
-
-        switch(newForm){
-            case "signup":
-                $(".signup-fields").css("display", "inline-block");
-                break;
-            case "pwreset":
-                $(".pwreset-fields").css("display", "inline-block");
-                break;
-            default:
-                $(".login-fields").css("display", "inline-block");
-                break;
-        }
-        $("#message").remove();
-    }
 
     /**jag HATAR cache */
 

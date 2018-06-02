@@ -6,7 +6,7 @@
         exit;
     }
     
-    //We be testing, yo chiidslllaisdsddodwdwwkdwdjadwaVAD I SJÄLVASTE FANdsdidwdwow*/
+    //We be testing, yo chiidslllaisdsddodwdwdsdswkdwdjadwaVAD I SJÄLVASTE FANdsdidwdwow*/
     include "sql_setup.php";
 ?>
 <!DOCTYPE html>
@@ -79,14 +79,38 @@
 
             	if ($group_id != $_GET["id"]){
 
-            		echo '
+                    if ($stmt = $mysqli->prepare("
 
-            			<form method="post" action="db_join_group.php">
-							<input type="hidden" name="group_id" value="'.$_GET['id'].'">
-							<input type="submit" value="Joina grupp boi">
-						</form>
+                        SELECT count(*), GROUPS.MAX_MEMBERS
+                        FROM GROUPS
+                        INNER JOIN USERS
+                        ON USERS.GROUP_ID = GROUPS.ID
+                        WHERE GROUPS.ID = ?
 
-            		';
+                    ")){
+
+                        $stmt->bind_param("i", $_GET["id"]);
+                        $stmt->execute();
+
+                        $stmt->bind_result($amount, $max_members);
+
+                        if ($stmt->fetch()){
+
+                            if ($amount != $max_members){
+
+                        		echo '
+
+                        			<form method="post" action="db_join_group.php">
+            							<input type="hidden" name="group_id" value="'.$_GET['id'].'">
+            							<input type="submit" value="Joina grupp boi">
+            						</form>
+
+                        		';
+                            }
+
+                        }   
+
+                    }
 
             	}
 
