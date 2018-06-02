@@ -99,8 +99,6 @@
 
                             if ($amount != $max_members){
 
-                                echo($amount." ".$max_members);
-
                         		echo '
 
                         			<form method="post" action="db_join_group.php">

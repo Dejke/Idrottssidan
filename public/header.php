@@ -5,35 +5,30 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 <style type="text/css">
+  
+  .btn i{
+    font-size: 2em; 
 
-  .user{
-    width: 50px;
-    height: 50px;
+    -o-transition:.25s;
+    -ms-transition:.25s;
+    -moz-transition:.25s;
+    -webkit-transition:.25s;
+    /* ...and now for the proper property */
+    transition:.25s;
   }
-  .user i{
-    font-size: 3em;
+
+  .btn:hover i{
+    color: #444444;
   }
 
-  /*
-  .drop{
-    font-size: 1em;
-
-    width: 200px;
-    min-height: auto;
-
-    background-color: green;
-    display: none;
-
-    position: relative;
-    left:-150px;
-    top: 10px;
-    z-index: 10;
+  .btn:focus i{
+    text-shadow: 0px 0px 4px #004788;
   }
-  .drop *{
-    margin-top: 10px !important;
-    margin-bottom: 10px !important;
+
+  .btn:focus, .btn:active:focus, .btn.active:focus{
+    outline:none;
+    box-shadow:none;
   }
-  */
 
 </style>
 
@@ -46,28 +41,13 @@
                     background-size:cover;
                     margin: -20px 0 -40px 0;
                     position: relative;
-                    top: 15px;
+                    top: 10px;
                 "
             alt = "Lars Kagg"></div>
     </a>
 
-  <!--
-  <div class="user navbar-nav ml-auto">
-
-    <i class="fas fa-user"></i>
-
-    <div class="drop h4 text-center">
-
-      <span class="">HALLÅs</span><br>
-      <a class="" href="db_log_out.php">Logga ut</a>
-
-    </div>
-
-  </div>
-  -->
-
   <div class="btn-group ml-auto" style="float: right;">
-    <button type="button" class="btn btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #3c5fdf; border-color: #3c5fdf; border-radius: 4px ">
+    <button type="button" class="btn btn-lg user text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" border-radius: 20px; background: none; ">
       <i class="fas fa-user"></i>
     </button>
     <div class="dropdown-menu dropdown-menu-right mt-0">
@@ -80,11 +60,31 @@
 
 </nav>
 <script type="text/javascript">
+
+  $(function(){
+    // ADD SLIDEDOWN ANIMATION TO DROPDOWN //
+    $('.dropdown').on('show.bs.dropdown', function(e){
+        $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+    });
+
+    // ADD SLIDEUP ANIMATION TO DROPDOWN //
+    $('.dropdown').on('hide.bs.dropdown', function(e){
+        e.preventDefault();
+        $(this).find('.dropdown-menu').first().stop(true, true).slideUp(400, function(){
+            //On Complete, we reset all active dropdown classes and attributes
+            //This fixes the visual bug associated with the open class being removed too fast
+            $('.dropdown').removeClass('open');
+            $('.dropdown').find('.dropdown-toggle').attr('aria-expanded','false');
+        });
+    });
+});
   
+  /*
   $(".user i").click(function(){
 
     $(".drop").fadeToggle(100);
 
   });
-
+  */
+  
 </script>
