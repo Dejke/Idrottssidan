@@ -61,7 +61,6 @@
                     $(".login-fields").css("display", "inline-block");
                     break;
             }
-            //$("#message").remove();
         }
 
         function putMessage(text, good, page){
@@ -147,88 +146,110 @@
     <!-- SIGN UP FORM MEME -->
     <form id="signupForm" method="post" action="db_add_user.php" onsubmit="return validate(this)" class="fields signup-fields">
 
-		<span id="email-warning"></span>
+        <span id="email-warning"></span>
         
-        <div class="form-group">
-            <label>Ksgyf-email</label>
-            <input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en mailadress från ksgyf." onfocusout="studentMailCheck(this);" class="form-control">
+        <div class="input-group row mb-4" style = "margin-left:0;">
+            <div class="input-group-prepend ">
+                <div class="input-group-text">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+            <input type="text" name="fname" max="64" class="form-control col-6" placeholder = "Förnamn">
+            <input type="text" name="lname" max="64"class="form-control col-6" placeholder = "Efternamn">
+        </div>
 
-            <label>Upprepa ksgyf-email</label><br>
-            <input type="text" name="email2" class="form-control">
+        
+        <div class="control-group mb-4">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-at"></i></div>
+                </div>
+                <input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en mailadress från ksgyf." onfocusout="studentMailCheck(this);" class="form-control" placelholder = "Ksgyf-email">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-at"></i></div>
+                </div>
+                <input type="text" name="email2" class="form-control" placeholder = "Upprepa Ksgyf-email">
+            </div>
         </div>
 
         <div class="form-group">
             <span id="password-warning"></span>
-            <span>Lösenord</span>
-            <input type="password" name="password" class="form-control">
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-unlock"></i></div>
+                </div>
+                <input type="password" name="password" class="form-control" placeholder = "Lösenord">
+            </div>
 
-            <label>Upprepa lösenord</label>
-            <input type="password" name="password2" class="form-control">
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-unlock"></i></div>
+                </div>
+                <input type="password" name="password2" class="form-control" placeholder = "Upprepa lösenord">
+            </div>
         </div>
 
-        <div class="form-group row">
+        <label>Klass</label>
 
-        </div>
-        <label>Klass:</label>
-        <select name="programme" class="classFields form-control">
-            <option value="TEACHER"></option>
-            <option value="BA">BA</option>
-            <option value="EE">EE</option>
-            <option value="FT">FT</option>
-            <option value="HV">HV</option>
-            <option value="IM">IM</option>
-            <option value="IMS">IMS</option>
-            <option value="NA">NA</option>
-            <option value="TE">TE</option>
-            <option value="VF">VF</option>
-        </select>
-        <select name="grade" class="classFields form-control">
-            <option value="TEACHER"></option>
-            <?
-
-                // OOOF måste lägga till kommentar för att filstorleken  ändras memex
-                if(date('n')>=7){
-                    $highestYear = date("Y");
-                }
-                else{
-                    $highestYear = date("Y")-1;
-                }
-
-                for($year = $highestYear; $year >= (int)($highestYear-2); $year--){
-                    $abbrev = substr($year, -2);
-                    echo('<option value="'.$abbrev.'">'.$abbrev.'</option>');
-                }
-            ?>
-        </select>
-
-        <select name = "letter" class = "classFields form-control">
-            <option value="TEACHER"></option>
+        <div class="form-group row" style = "margin-right: 0; margin-left:0;">
+            <select name="programme" class="classFields form-control col-4">
+                <option value="TEACHER"></option>
+                <option value="BA">BA</option>
+                <option value="EE">EE</option>
+                <option value="FT">FT</option>
+                <option value="HV">HV</option>
+                <option value="IM">IM</option>
+                <option value="IMS">IMS</option>
+                <option value="NA">NA</option>
+                <option value="TE">TE</option>
+                <option value="VF">VF</option>
+            </select>
+            <select name="grade" class="classFields form-control col-4">
+                <option value="TEACHER"></option>
                 <?
-                    for($i = 65; $i <= 65+12; $i++){
-                        $chr = chr($i);
-                        echo('<option value="'.$chr.'">'.$chr.'</option>');
+                    if(date('n')>=7){
+                        $highestYear = date("Y");
+                    }
+                    else{
+                        $highestYear = date("Y")-1;
+                    }
+
+                    for($year = $highestYear; $year >= (int)($highestYear-2); $year--){
+                        $abbrev = substr($year, -2);
+                        echo('<option value="'.$abbrev.'">'.$abbrev.'</option>');
                     }
                 ?>
-        </select>
-        <br><br>
-        <label>Förnamn</label><br>
-        <input type="text" name="fname" max="64" class="form-control">
-        <br>
-        <label>Efternamn</label>
-        <br>
-        <input type="text" name="lname" max="64"class="form-control">
-        <br><br>
+            </select>
+
+            <select name = "letter" class = "classFields form-control col-4">
+                <option value="TEACHER"></option>
+                    <?
+                        for($i = 65; $i <= 65+12; $i++){
+                            $chr = chr($i);
+                            echo('<option value="'.$chr.'">'.$chr.'</option>');
+                        }
+                    ?>
+            </select>
+        </div>
+
+        
         <input type="submit" value="Registrera"class="form-control">
+
     </form>
 
     <!-- PASS RESET FORM MEME -->
     <form id="passwordResetForm" method="post" action="db_password_reset.php" class="fields pwreset-fields">
-        
-        <label>Ksgyf-email</label><br>
-        <input type="text" name="email">
-        <br><br>
-
-        <input type="submit" value="Skicka återställningslänk">
+        <div class="input-group mb-4">
+            <div class="input-group-prepend ">
+                <div class="input-group-text">
+                    <i class="fas fa-at"></i>
+                </div>
+            </div>
+            <input type="text" name="email" class="form-control">
+        </div>
+        <input type="submit" value="Skicka återställningslänk" class="form-control">
     </form>
 
     <br><br>
