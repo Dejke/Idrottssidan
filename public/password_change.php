@@ -24,7 +24,7 @@
             session_destroy();
             if($stmt = $mysqli->prepare(
                 "
-                    DELETTE FROM PASSWORD_RESETS 
+                    DELETE FROM PASSWORD_RESETS 
                         WHERE USER_ID = ?
                 "
             )){
@@ -36,15 +36,13 @@
             }
             else{
                 echo "something broke";
+                exit;
             }
                 
         }
         else{
             echo "tror jag dog";
         }
-    }
-    else{
-        echo "RE";
     }
 
 ?>

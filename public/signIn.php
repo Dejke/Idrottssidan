@@ -121,6 +121,7 @@
                         message($_GET["message"], true, "login");
                 }
             }
+<<<<<<< HEAD
 
             function message($text, $good, $page){
                 echo "<script>putMessage('".$text."',".($good ? 'true' : 'false').",'".$page."')</script>";
@@ -128,6 +129,11 @@
 
         ?>
 
+=======
+            echo "</span><br>\n<br>\n";
+        }
+    ?>
+>>>>>>> bafb8f4de834a1c2c3f1e4cad6168cd3214aef86
     <!-- LOG IN FORM MEME (VAD I HEL VETE DEN LÄGGER TILL EN BR SOM FÖRSVINNER OM MAN KLICKAR PÅ EN LÄNK OCH SEN TILLBAKA WTff??!?!?!?+ -->
     <form id="loginForm" method="post" action="db_sign_in.php" class="fields login-fields">
         <label>Ksgyf-email</label><br>

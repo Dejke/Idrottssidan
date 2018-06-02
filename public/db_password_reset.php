@@ -77,12 +77,25 @@
                     $mail->Port		  = 587;
                     $mail->Username   = "noreply@kaggteknik.se";  // username
                     $mail->Password   = $SECRET["mail_password"]; 
+                    $mail->CharSet = "UTF-8";
 	                $mail->SetFrom('noreply@kaggteknik.se', 'Lasse Kagg');
                     $mail->AddReplyTo("noreply@kaggteknik.se","Lasse Kagg");
-                    $mail->subject = "Lösenordsåterställning";
-                    $mail->MsgHTML($_SERVER["HTTP_HOST"]."/password_change.php?str=".$key);
+                    $mail->Subject = "Lösenordsändring";
                     $mail->AddAddress($address);
 
+                    
+
+                    //Generates a password reset email.
+                    $link = $_SERVER["HTTP_HOST"]."/password_change.php?str=".$key;
+                    $body = 'En lösenordsändring har begärts på ditt konto till idrottssidan. <br>
+                    Klicka <a href = "'.$link.'">här</a> eller på länken nedan för att fylla i ditt nya lösenord.
+                    <br>
+                    <br>'
+                    .$link.
+                    '<br><br>
+                    Om du inte har begärt en lösenordsändring så kan du ignorera det här mailet.';
+
+                    $mail->MsgHTML($body);
 
 
 
