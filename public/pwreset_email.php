@@ -1,10 +1,14 @@
 <?
     //Generates a password reset email.
-    //Takes recipient email as 
+    //Takes PASSWORD_RESETS key as $_GET["key"] 
+    $link = $_SERVER["HTTP_HOST"]."/password_change.php?str=".$_GET["key"];
+
 ?>
 
-Y I K E S
-
-It looks like you dun goofed.
-
-<a href = "<?/*Stuff is here*/?>">ha HA</a>
+En lösenordsändring har begärts på ditt konto till idrottssidan. <br>
+Klicka <a href = "<?echo $link?>">här</a> eller på länken nedan för att fylla i ditt nya lösenord.
+<br>
+<br>
+<?echo $link?>
+<br><br>
+Om du inte har begärt en lösenordsändring så kan du ignorera det här mailet.

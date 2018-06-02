@@ -85,7 +85,7 @@
                 default:
                     echo $_GET["message"];
             }
-            echo "</span><br>\n";
+            echo "</span><br>\n<br>\n";
         }
     ?>
     <!-- LOG IN FORM MEME (VAD I HEL VETE DEN LÄGGER TILL EN BR SOM FÖRSVINNER OM MAN KLICKAR PÅ EN LÄNK OCH SEN TILLBAKA WTff??!?!?!?+ -->
