@@ -6,13 +6,14 @@
         exit;
     }
     
-    //We be testing, yo chiidslllaisdsddodwdwdsdswkdwdjadwaVAD I SJÄLVASTE FANdsdidwdwow*/
+    //We be testing, yo chiidslllaisdsddodwdwdsdfdfdswkdwdjadwaVAD I SJÄLVASTE FANdsdidwdwow*/
     include "sql_setup.php";
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="stylesheet/main.css">
 	<title>Group</title>
 </head>
 <body>
@@ -73,9 +74,9 @@
 
             $stmt->bind_result($group_id);
 
-            echo "does work?";
-
             if ($stmt->fetch()){
+
+                $stmt->close();
 
             	if ($group_id != $_GET["id"]){
 
@@ -97,6 +98,8 @@
                         if ($stmt->fetch()){
 
                             if ($amount != $max_members){
+
+                                echo($amount." ".$max_members);
 
                         		echo '
 

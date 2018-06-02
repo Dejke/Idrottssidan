@@ -36,6 +36,8 @@
                 }
             }
 
+            $stmt->close();
+
         }
 
         // Delete created group
