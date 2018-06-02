@@ -129,7 +129,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text"><i class="fas fa-at"></i></div>
             </div>
-
+            <label class="sr-only">Ksgyf-email</label>
             <input type="text" name="email" class="form-control" placeholder = "Ksgyf-email">
         </div>
 
@@ -137,6 +137,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text"><i class="fas fa-unlock"></i></div>
             </div>
+            <label class="sr-only">Lösenord</label>
             <input type="password" name="password" class="form-control">
         </div>
 
@@ -154,7 +155,9 @@
                     <i class="fas fa-user"></i>
                 </div>
             </div>
+            <label class="sr-only">Förnamn</label>
             <input type="text" name="fname" max="64" class="form-control col-6" placeholder = "Förnamn">
+            <label class="sr-only">Efternamn</label>
             <input type="text" name="lname" max="64"class="form-control col-6" placeholder = "Efternamn">
         </div>
 
@@ -164,12 +167,14 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-at"></i></div>
                 </div>
+                <label class="sr-only">Ksgyf-email</label>
                 <input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en mailadress från ksgyf." onfocusout="studentMailCheck(this);" class="form-control" placelholder = "Ksgyf-email">
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-at"></i></div>
                 </div>
+                <label class="sr-only">Upprepa Ksgyf-email</label>
                 <input type="text" name="email2" class="form-control" placeholder = "Upprepa Ksgyf-email">
             </div>
         </div>
@@ -180,6 +185,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-unlock"></i></div>
                 </div>
+                <label class="sr-only">Lösenord</label>
                 <input type="password" name="password" class="form-control" placeholder = "Lösenord">
             </div>
 
@@ -187,13 +193,14 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-unlock"></i></div>
                 </div>
+                <label class="sr-only">Upprepa lösenord</label>
                 <input type="password" name="password2" class="form-control" placeholder = "Upprepa lösenord">
             </div>
         </div>
 
         <label>Klass</label>
 
-        <div class="form-group row" style = "margin-right: 0; margin-left:0;">
+        <div class="form-group row mb-4" style = "margin-right: 0; margin-left:0;">
             <select name="programme" class="classFields form-control col-4">
                 <option value="TEACHER"></option>
                 <option value="BA">BA</option>
@@ -247,6 +254,7 @@
                     <i class="fas fa-at"></i>
                 </div>
             </div>
+            <label class="sr-only">Ksgyf-email</label>
             <input type="text" name="email" class="form-control">
         </div>
         <input type="submit" value="Skicka återställningslänk" class="form-control">

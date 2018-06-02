@@ -5,8 +5,7 @@
         header("Location: signIn.php");
         exit;
     }
-    
-    //We be testing, yo chiidslllaisdsddodwdwdsdfdfdswkdwdjadwaVAD I SJÄLVASTE FANdsdidwdwow*/
+
     include "sql_setup.php";
 ?>
 <!DOCTYPE html>
