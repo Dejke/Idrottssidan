@@ -92,15 +92,9 @@
     <button type="button" class="btn btn-lg user text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" border-radius: 20px; background: none; ">
       <i class="fas fa-user"></i>
     </button>
-<<<<<<< HEAD
     <div class="dropdown-menu dropdown-menu-right mt-0">
       <a class="dropdown-item p-2" href="user_page.php"><i class="fas fa-cog"></i> Kontoinställningar</a>
       <a class="dropdown-item p-2" href="db_log_out.php"><i class="fas fa-sign-out-alt"></i> Logga ut</a>
-=======
-    <div class="dropdown-menu dropdown-menu-right">
-      <a class="dropdown-item" href="user_page.php"><i class="fas fa-cog"></i> Kontoinställningar</a>
-      <a class="dropdown-item" href="db_log_out.php"><i class="fas fa-sign-out-alt"></i> Logga ut</a>
->>>>>>> a15998309d327350c05077e7888dc170d06224ed
     </div>
    
   </div>
