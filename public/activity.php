@@ -15,6 +15,17 @@
 	<title></title>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+
+	<style type="text/css">
+		.containz{
+			/*
+			border-style: solid;
+			border-width: 1px;
+			border-radius: 5px;
+			*/
+		}
+	</style>
+
 </head>
 <body>
 	<?include "header.php";?>
@@ -36,7 +47,7 @@
 
 	                if ($stmt->fetch()){
 	                	echo "
-	                	<span class='h1'>".$name."</span>
+	                	<span class='h1 pt-3'>".$name."</span>
 	                	";
 
 	                	echo "
@@ -57,6 +68,8 @@
 
 	                $userId = $_SESSION["USER"];
 	                $activityId = $_GET["id"];
+
+	                echo '<div class="container">';
 
 	                // get groups or students
 	                if ($groupSize > 1){
@@ -87,23 +100,23 @@
 	                		if ($button){
 	                			echo '
 
-			                	<form method="post" action="db_create_group.php">
+			                	<form method="post" class="pb-1" action="db_create_group.php">
 							        <input type="hidden" name="userId" value="'.$userId.'">
 							        <input type="hidden" name="activityId" value="'.$activityId.'">
 							        <input type="hidden" name="groupSize" value="'.$groupSize.'">
-							        <input type="submit" class="form-control" value="Skapa ett lag">
-							    </form><br>
+							        <input type="submit" class="form-control pb-1" value="Skapa ett lag">
+							    </form>
 
 	                			';
 	                		} else {
-	                			echo "Du är redan med boi<br>";
+	                			echo "<span>Du är redan med i ett lag</span>";
 	                		}
 
 		            	}
 
 	                	// Show groups
 		                if ($stmt = $mysqli->prepare("
-			                SELECT USERS.FIRST_NAME, GROUPS.ID
+			                SELECT GROUPS.ID, USERS.FIRST_NAME, USERS.LAST_NAME, USERS.PROGRAMME, USERS.GRADE, USERS.LETTER
 			                FROM GROUPS 
 			                INNER JOIN USERS
 			                ON GROUPS.CREATOR_ID = USERS.ID
@@ -113,10 +126,20 @@
 		                	$stmt->bind_param("i", $_GET["id"]);
 	                		$stmt->execute();
 
-	                		$stmt->bind_result($name, $group);
+	                		$stmt->bind_result($group, $fname, $lname, $programme, $grade, $letter);
 
+	                		echo "<div class='containz border border-secondary rounded'>";
 	                		while($stmt->fetch()){
-	                			echo "<a href='group?id=".$group."'>".$name."</a><br>";
+
+	                			echo "<a href='group?id=".$group."'>
+
+	                			<div class='row p-3'>
+	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$fname."</span>
+	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$lname."</span>
+	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$programme."".$grade."".$letter."</span>
+	                			</div>
+
+	                			</a>";
 	                		}
 
 		            	} else echo $mysqli->error;
@@ -149,26 +172,24 @@
 	                		if ($button){
 	                			echo '
 
-			                	<form method="post" action="db_create_group.php">
+			                	<form method="post" class="pb-1" action="db_create_group.php">
 							        <input type="hidden" name="userId" value="'.$userId.'">
 							        <input type="hidden" name="activityId" value="'.$activityId.'">
 							        <input type="hidden" name="groupSize" value="'.$groupSize.'">
-							        <input type="submit" style="width:200px;" class="form-control" value="Gå med i aktivitet">
-							    </form><br>
+							        <input type="submit" class="form-control" value="Gå med i aktivitet">
+							    </form>
 
 	                			';
 	                		} else {
 	                			echo "<span>Du är redan med i aktiviteten</span>";
 	                		}
 		            	}
-
-		            	echo '<div class="container contz">';
 		            	
 						if ($stmt = $mysqli->prepare("
 			                SELECT USERS.FIRST_NAME, USERS.LAST_NAME, USERS.PROGRAMME, USERS.GRADE, USERS.LETTER
 			                FROM USERS
 			                INNER JOIN GROUPS
-			                ON USERS.GROUP_ID = GROUPS.ID
+			                ON GROUPS.CREATOR_ID = USERS.ID
 			                WHERE GROUPS.ACTIVITY_ID = ?
 		            	")){
 
@@ -177,10 +198,12 @@
 
 							$stmt->bind_result($fname, $lname, $programme, $grade, $letter);
 
+							echo "<div class='containz border border-secondary rounded'>";
 							while($stmt->fetch()){
+
 	                			echo "
 
-	                			<div class='row'>
+	                			<div class='row p-3'>
 	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$fname."</span>
 	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$lname."</span>
 	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$programme."".$grade."".$letter."</span>
@@ -189,9 +212,11 @@
 	                			";
 	                		}
 		            	}
-						
-		            	echo "</div>";
 		        	}	
+
+		        	echo "</div>";
+		            echo "</div>";
+
 				}
 			}
 		?>
