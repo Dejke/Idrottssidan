@@ -42,10 +42,10 @@
 
 	                	echo "
 
-		                	<div class='row my-3 justify-content-center'>
+		                	<div class='row justify-content-center'>
 		                		<span class='col-lg-6 col-md-6 col-sm-12 lead'>".$description."</span>
 		                	</div>
-		                	<div class='row mb-5 justify-content-around'>
+		                	<div class='row my-5 justify-content-around'>
 		                		<span class='col-lg-6 col-md-6 col-sm-12 display-5'>Plats: ".$location."</span>
 		                		<span class='col-lg-6 col-md-6 col-sm-12 display-5'>Tid: ".$time."</span>
 		                	</div>

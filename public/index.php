@@ -63,9 +63,9 @@
                 echo "
                     <thead>
                         <tr>
-                            <th style = 'width:40%;'>Aktivitet</th>
-                            <th style = 'width:30%;'>Plats</th>
-                            <th style = 'width:30%;'>Tid</th>
+                            <th style = 'width:33.3%;'>Aktivitet</th>
+                            <th style = 'width:33.3%;'>Plats</th>
+                            <th style = 'width:33.3%;'>Tid</th>
                         </tr>
                     </thead>
                 ";

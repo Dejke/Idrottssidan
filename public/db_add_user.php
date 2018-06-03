@@ -37,8 +37,8 @@
 
     		$email = $_POST["email"];
     		$password = password_hash($_POST["password"], PASSWORD_BCRYPT);
-    		$first_name = $_POST["fname"];
-    		$last_name = $_POST["lname"];
+    		$first_name = ucfirst(strtolower($_POST["fname"]));
+    		$last_name = ucfirst(strtolower($_POST["lname"]));
     		$programme = $_POST["programme"];
     		$grade = $_POST["grade"];
     		$letter = $_POST["letter"];
