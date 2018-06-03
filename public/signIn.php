@@ -101,6 +101,9 @@
                     case "passwordchanged":
                         message("Ditt lösenord har ändrats.", "success");
                         break;
+                    case "loggedout":
+                        message("Du har loggats ut.", "info");
+                        break;
                     default:
                         message($_GET["message"], true);
                 }

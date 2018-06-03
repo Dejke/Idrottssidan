@@ -6,68 +6,55 @@
 
 <style type="text/css">
   
-  .btn i{
-    font-size: 2em; 
-
-    -o-transition:.25s;
-    -ms-transition:.25s;
-    -moz-transition:.25s;
-    -webkit-transition:.25s;
-    /* ...and now for the proper property */
-    transition:.25s;
+  .navbuttonz i{
+    font-size: 1.7em; 
   }
-
-  .btn:hover i{
-    color: #444444;
-  }
-
-  .btn:focus i{
+  .navbuttonz:focus i{
     text-shadow: 0px 0px 4px #004788;
-    border-
+    
   }
 
   .btn:focus, .btn:active:focus, .btn.active:focus{
     outline:none;
     box-shadow:none;
   }
+  .navbar{
+    background-color: #e5edf2;
+  }
+  .navbuttonz{
+    -o-transition:.25s;
+    -ms-transition:.25s;
+    -moz-transition:.25s;
+    -webkit-transition:.25s;
+    transition:.25s;
+    background-color: #e5edf2;
+  }
+  .navbuttonz:hover{
+    color: #444444;
+  }
 
 </style>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+      <a class="navbar-brand" href="index">
+      <div style= "
+                      background:url('images/logo.svg');
+                      width: 100px;
+                      height:120px;
+                      background-size:cover;
+                      margin: -32px 0 -40px 0;
+                      position: relative;
+                      top: 20px;
+                  "
+              alt = "Lars Kagg"></div>
+      </a>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index">
-    <div style= "
-                    background:url('images/logo.svg');
-                    width: 90px;
-                    height:108px;
-                    background-size:cover;
-                    margin: -20px 0 -40px 0;
-                    position: relative;
-                    top: 10px;
-                "
-            alt = "Lars Kagg"></div>
-    </a>
-
-  <div class="btn-group ml-auto" style="float: right;">
-    <button type="button" class="btn btn-lg user text-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" border-radius: 20px; background: none; ">
-      <i class="fas fa-user"></i>
-    </button>
-    <div class="dropdown-menu dropdown-menu-right mt-0">
-      <a class="dropdown-item" href="user_page.php"><i class="fas fa-cog"></i> Kontoinställningar</a>
-      <a class="dropdown-item" href="db_log_out.php"><i class="fas fa-sign-out-alt"></i> Logga ut</a>
+    <div class="btn-group ml-auto" style="float: right;">
+     
+      <a href="user_page.php"><button class="btn navbuttonz"><i class="fas fa-cog text-dark"></i></button></a>
+      <a href="db_log_out.php"><button class="btn navbuttonz"><i class="fas fa-sign-out-alt text-dark"></i></button></a>
     </div>
+   
   </div>
-  </nav>
-    
 
 </nav>
-<script type="text/javascript">
-  
-  /*
-  $(".user i").click(function(){
-
-    $(".drop").fadeToggle(100);
-
-  });
-  */
-  
-</script>
