@@ -41,11 +41,7 @@
             $stmt->bind_result($fname, $lname);
 
             if ($stmt->fetch()){
-<<<<<<< HEAD
                 echo "<span class='display-4 pb-3'>".$fname." ".$lname."s lag</span>";
-=======
-                echo "<span class='h1 pb-3 display-3'>".$fname." ".$lname." ".$programme.$grade.$letter."</span>";
->>>>>>> e36e89c85e2c253a039276428a592fa494840c60
             }
 
             $stmt->close();
@@ -54,7 +50,6 @@
 
     }
 
-<<<<<<< HEAD
     if (isset($_GET["id"])){
 
         if ($stmt = $mysqli->prepare("
@@ -64,55 +59,12 @@
             WHERE USERS.GROUP_ID = ?
 
         ")){
-=======
-    ?>
-
-	<div class="">
-		
-		<?
-
-			if (isset($_GET["id"])){
-
-				if ($stmt = $mysqli->prepare("
-
-    				SELECT USERS.FIRST_NAME, USERS.LAST_NAME, USERS.PROGRAMME, USERS.GRADE, USERS.LETTER 
-    				FROM USERS
-    				WHERE USERS.GROUP_ID = ?
-
-    			")){
-
-					$stmt->bind_param("i", $_GET["id"]);
-                	$stmt->execute();
-
-                	$stmt->bind_result($fname, $lname, $programme, $grade, $letter);
-
-                    echo "<table class = 'table table-striped table-bordered mt-3'>";
-                    echo "
-                        <thead>
-                            <tr>
-                                <th style = 'width:65%;'>Namn</th>
-                                <th style = 'width:35%;'>Klass</th>
-                            </tr>
-                        </thead>
-                    ";
-
-
-                	while ($stmt->fetch()) {
-                		
-                		echo "
-
-                            <tr>
-                                <td>".$fname." ".$lname."</td>
-                                <td>".$programme."".$grade."".$letter."</td>
-                            </tr>
->>>>>>> e36e89c85e2c253a039276428a592fa494840c60
 
             $stmt->bind_param("i", $_GET["id"]);
             $stmt->execute();
 
             $stmt->bind_result($fname, $lname, $programme, $grade, $letter);
 
-<<<<<<< HEAD
             echo "<table class = 'table table-striped table-bordered mt-3'>";
             echo "
                 <thead'>
@@ -130,11 +82,6 @@
                         <td>".$programme."".$grade."".$letter."</td>
                     </tr>
                 ";
-=======
-
-
-                	$stmt->close();
->>>>>>> e36e89c85e2c253a039276428a592fa494840c60
 
             }
             echo "</table>";
