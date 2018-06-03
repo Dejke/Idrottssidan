@@ -85,8 +85,8 @@
       <i class="fas fa-user"></i>
     </button>
     <div class="dropdown-menu dropdown-menu-right mt-0">
-      <a class="dropdown-item" href="user_page.php"><i class="fas fa-cog"></i> Kontoinställningar</a>
-      <a class="dropdown-item" href="db_log_out.php"><i class="fas fa-sign-out-alt"></i> Logga ut</a>
+      <a class="dropdown-item p-2" href="user_page.php"><i class="fas fa-cog"></i> Kontoinställningar</a>
+      <a class="dropdown-item p-2" href="db_log_out.php"><i class="fas fa-sign-out-alt"></i> Logga ut</a>
     </div>
   </div>
   </nav>

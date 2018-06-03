@@ -91,7 +91,7 @@
 							        <input type="hidden" name="userId" value="'.$userId.'">
 							        <input type="hidden" name="activityId" value="'.$activityId.'">
 							        <input type="hidden" name="groupSize" value="'.$groupSize.'">
-							        <input type="submit" value="Skapa ett lag">
+							        <input type="submit" class="form-control" value="Skapa ett lag">
 							    </form><br>
 
 	                			';
@@ -153,7 +153,7 @@
 							        <input type="hidden" name="userId" value="'.$userId.'">
 							        <input type="hidden" name="activityId" value="'.$activityId.'">
 							        <input type="hidden" name="groupSize" value="'.$groupSize.'">
-							        <input type="submit" value="Gå med i aktivitet">
+							        <input type="submit" class="form-control" value="Gå med i aktivitet">
 							    </form><br>
 
 	                			';
