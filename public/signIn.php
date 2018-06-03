@@ -153,26 +153,26 @@
                 </div>
             </div>
             <label class="sr-only">Förnamn</label>
-            <input type="text" name="fname" max="64" class="form-control col-6" placeholder = "Förnamn">
+            <input type="text" name="fname" max="64" class="form-control col-6" placeholder = "Förnamn" required>
             <label class="sr-only">Efternamn</label>
-            <input type="text" name="lname" max="64"class="form-control col-6" placeholder = "Efternamn">
+            <input type="text" name="lname" max="64"class="form-control col-6" placeholder = "Efternamn" required style= "border-left:0;">
         </div>
 
         
         <div class="control-group mb-4">
-            <div class="input-group">
+            <div class="input-group mb-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-at"></i></div>
                 </div>
                 <label class="sr-only">Ksgyf-email</label>
-                <input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en mailadress från ksgyf." onfocusout="studentMailCheck(this);" class="form-control" placelholder = "Ksgyf-email">
+                <input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en mailadress från ksgyf." onfocusout="studentMailCheck(this);" class="form-control" placelholder = "Ksgyf-email" required>
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-at"></i></div>
                 </div>
                 <label class="sr-only">Upprepa Ksgyf-email</label>
-                <input type="text" name="email2" class="form-control" placeholder = "Upprepa Ksgyf-email">
+                <input type="text" name="email2" class="form-control" placeholder = "Upprepa Ksgyf-email" required>
             </div>
         </div>
 
@@ -183,7 +183,7 @@
                     <div class="input-group-text"><i class="fas fa-unlock"></i></div>
                 </div>
                 <label class="sr-only">Lösenord</label>
-                <input type="password" name="password" class="form-control" placeholder = "Lösenord">
+                <input type="password" name="password" class="form-control" placeholder = "Lösenord" required>
             </div>
 
             <div class="input-group mb-2">
@@ -191,11 +191,11 @@
                     <div class="input-group-text"><i class="fas fa-unlock"></i></div>
                 </div>
                 <label class="sr-only">Upprepa lösenord</label>
-                <input type="password" name="password2" class="form-control" placeholder = "Upprepa lösenord">
+                <input type="password" name="password2" class="form-control" placeholder = "Upprepa lösenord" required>
             </div>
         </div>
 
-        <label>Klass</label>
+        <label id = "classLabel">Klass</label>
 
         <div class="form-group row mb-4" style = "margin-right: 0; margin-left:0;">
             <select name="programme" class="classFields form-control col-4">
@@ -256,17 +256,16 @@
         </div>
         <input type="submit" value="Skicka återställningslänk" class="form-control">
     </form>
-
-    <br><br>
-
-    <div class="fields login-fields pwreset-fields w-100">
-        <a href="#" id="signup">Registrera ett konto</a>
-    </div>
-    <div class="fields signup-fields pwreset-fields w-100">
-        <a href="#" id="login">Logga in</a>
-    </div>
-    <div class="fields login-fields signup-fields w-100">
-        <a href = "#" id="pwreset">Glömt ditt lösenord?</a>
+    <div class="mt-4">
+        <div class="fields signup-fields pwreset-fields w-100">
+            <a href="#" id="login">Logga in</a>
+        </div>
+        <div class="fields login-fields pwreset-fields w-100">
+            <a href="#" id="signup">Registrera ett konto</a>
+        </div>
+        <div class="fields login-fields signup-fields w-100">
+            <a href = "#" id="pwreset">Glömt ditt lösenord?</a>
+        </div>
     </div>
     
 </div>
@@ -308,13 +307,17 @@
         if(/\.student\@/.test(field.value)){
             <?/* när ".student@" finns i fältet*/?>
             $(".classFields")
-                .prop("disabled",false);
+                .prop("disabled",false)
+                .prop("required", true);
+            $("#classLabel").css("opacity", "1");
         }
         else{
             <?/* när ".student@" inte finns i fältet*/?>
             $(".classFields")
                 .val("0")
-                .prop("disabled",true);
+                .prop("disabled",true)
+                .prop("required", false);
+            $("#classLabel").css("opacity", "0");
 
         }
     }
@@ -335,7 +338,6 @@
         setForm("pwreset");
     });
 
-    /**jag HATAR cache */
 
 </script>
 </html>
