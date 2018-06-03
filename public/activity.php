@@ -6,7 +6,7 @@
         exit;
     }
     
-    //We be testing, yo chiidslllaisdsdddefsdfdswdwedsadasosdfsfesfdfsdfsdfwkdwdjadwadsdiow*/
+    //We be testing, yo chiidslllaisdsdddefsdfdswdwedsadasosdfsfesfdwadwdfsdfsdfwkdwdjadwadsdiow*/
     include "sql_setup.php";
 ?>
 <!DOCTYPE html>
@@ -15,17 +15,6 @@
 	<title></title>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="stylesheets/main.css">
-
-	<style type="text/css">
-		.containz{
-			/*
-			border-style: solid;
-			border-width: 1px;
-			border-radius: 5px;
-			*/
-		}
-	</style>
-
 </head>
 <body>
 	<?include "header.php";?>
@@ -53,13 +42,13 @@
 	                	echo "
 
 		                	<div class='row p-5'>
-		                		<span class='ol-lg-12 col-md-12 col-sm-12 h3'>".$description."</span>
+		                		<span class='col-lg-12 col-md-12 col-sm-12 h4'>".$description."</span>
 		                	</div>
 		                	<div class='row'>
-		                		<span class='ol-lg-12 col-md-12 col-sm-12 h3'>Plats: ".$location."</span>
+		                		<span class='col-lg-12 col-md-12 col-sm-12 h3'>Plats: ".$location."</span>
 		                	</div>
 		                	<div class='row pb-5'>
-		                		<span class='ol-lg-12 col-md-12 col-sm-12 h3'>Tid: ".$time."</span>
+		                		<span class='col-lg-12 col-md-12 col-sm-12 h3'>Tid: ".$time."</span>
 		                	</div>
 	                	";
 	                }

@@ -20,6 +20,38 @@
 	<?include "header.php";?>
 
     <div class="container text-center">
+
+    <?
+
+    if(isset($_GET["id"])){
+
+        if ($stmt = $mysqli->prepare("
+
+            SELECT USERS.FIRST_NAME, USERS.LAST_NAME, USERS.PROGRAMME, USERS.GRADE, USERS.LETTER 
+            FROM USERS
+            INNER JOIN GROUPS
+            ON USERS.ID = GROUPS.CREATOR_ID
+            WHERE GROUPS.ID = ?
+
+        ")){
+
+            $stmt->bind_param("i", $_GET["id"]);
+            $stmt->execute();
+
+            $stmt->bind_result($fname, $lname, $programme, $grade, $letter);
+
+            if ($stmt->fetch()){
+                echo "<span class='h1 pb-3'>".$fname." ".$lname." ".$programme.$grade.$letter."</span>";
+            }
+
+            $stmt->close();
+
+        }
+
+    }
+
+    ?>
+
 	<div class="members border border-secondary rounded">
 		
 		<?

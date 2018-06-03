@@ -89,6 +89,7 @@
       ?>
 
     </span>
+    <button type="button" class="btn btn-lg user text-center navbuttonz" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" border-radius: 20px; background: none; ">
       <i class="fas fa-user"></i>
     </button>
     <div class="dropdown-menu dropdown-menu-right mt-0">
