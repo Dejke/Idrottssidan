@@ -47,7 +47,8 @@
     <script type="text/javascript">
         
         function setForm(newForm){
-
+            document.getElementById("message").classList = "";
+            document.getElementById("message").innerHTML = "";
             $(".fields").css("display","none");
 
             switch(newForm){
@@ -63,18 +64,15 @@
             }
         }
 
-        function putMessage(text, good, page){
+        function putMessage(text, type){
 
-            setForm(page);
 
-            document.getElementById("message").innerHTML = ""+text+"<br><br>";
+            document.getElementById("message").innerHTML = text;
 
-            if (good){
 
-                document.getElementById("message").classList.remove("bad-message");
-                document.getElementById("message").classList.add("good-message");
-
-            }
+            document.getElementById("message").classList = "";
+            document.getElementById("message").classList.add("alert");
+            document.getElementById("message").classList.add("alert-"+type);
 
         }
 
@@ -88,37 +86,36 @@
 
     <div id="logo"></div>
 
-        <span id="message" class="bad-message"></span>
+        <div id="message"></div>
 
         <?
             if ($_GET["message"]){
                 switch ($_GET["message"]) {
                     case "checkemail":
-                        message("Vi har skickat ett e-mail till din ksgyf-adress med en länk där du kan återställa ditt lösenord.<br>\n
-                        Om du inte ser mailet i inkorgen eller skräpkorgen inom 5 minuter, så kan du försöka igen.", true, "login");
+                        message("Vi har skickat ett e-mail till din Ksgyf-adress med en länk där du kan återställa ditt lösenord. Om du inte ser mailet i inkorgen eller skräpkorgen inom 5 minuter, så kan du försöka igen.", "info");
                         break;
                     case "noexistemail":
-                        message("Det finns inget konto kopplat till mailadressen du fyllde i.", false, "login");
+                        message("Det finns inget konto kopplat till mailadressen du fyllde i.", "warning");
                         break;
                     case "existingemail":
-                        message("Det finns redan ett konto med mailadressen som du fyllde i.", false, "signup");
+                        message("Det finns redan ett konto med mailadressen som du fyllde i.", "warning");
                         break;
                     case "accountcreated":
-                        message("Ditt konto har skapats.", true, "login");
+                        message("Ditt konto har skapats.", "success");
                         break;
                     case "invalidlogin":
-                        message("Felaktig mailadress eller lösenord.", false, "login");
+                        message("Felaktig mailadress eller lösenord.", "danger");
                         break;
                     case "passwordchanged":
-                        message("Ditt lösenord har ändrats.", true, "login");
+                        message("Ditt lösenord har ändrats.", "success");
                         break;
                     default:
-                        message($_GET["message"], true, "login");
+                        message($_GET["message"], true);
                 }
             }
 
-            function message($text, $good, $page){
-                echo "<script>putMessage('".$text."',".($good ? 'true' : 'false').",'".$page."')</script>";
+            function message($text, $type){
+                echo "<script>putMessage('".$text."','".$type."')</script>";
             }
 
         ?>
