@@ -19,7 +19,7 @@
 
 	<?include "header.php";?>
 
-    <div class="container text-center">
+    <div class="container text-center text-dark">
 
     <?
 
@@ -41,7 +41,7 @@
             $stmt->bind_result($fname, $lname, $programme, $grade, $letter);
 
             if ($stmt->fetch()){
-                echo "<span class='h1 pb-3'>".$fname." ".$lname." ".$programme.$grade.$letter."</span>";
+                echo "<span class='h1 pb-3 display-3'>".$fname." ".$lname." ".$programme.$grade.$letter."</span>";
             }
 
             $stmt->close();
@@ -52,7 +52,7 @@
 
     ?>
 
-	<div class="members border border-secondary rounded">
+	<div class="">
 		
 		<?
 
@@ -71,21 +71,31 @@
 
                 	$stmt->bind_result($fname, $lname, $programme, $grade, $letter);
 
+                    echo "<table class = 'table table-striped table-bordered mt-3'>";
+                    echo "
+                        <thead>
+                            <tr>
+                                <th style = 'width:65%;'>Namn</th>
+                                <th style = 'width:35%;'>Klass</th>
+                            </tr>
+                        </thead>
+                    ";
+
+
                 	while ($stmt->fetch()) {
                 		
                 		echo "
 
-                            <div class='row'>
-
-                                <span class='p-3 col-lg-4 col-md-4 col-sm-4'>".$fname."</span>
-                                <span class='p-3 col-lg-4 col-md-4 col-sm-4'>".$lname."</span>
-                                <span class='p-3 col-lg-4 col-md-4 col-sm-4'>".$programme."".$grade."".$letter."</span>
-
-                            </div>
+                            <tr>
+                                <td>".$fname." ".$lname."</td>
+                                <td>".$programme."".$grade."".$letter."</td>
+                            </tr>
 
                         ";
 
                 	}
+
+
 
                 	$stmt->close();
 

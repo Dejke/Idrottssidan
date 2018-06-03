@@ -133,6 +133,7 @@
 							
 									<td><a href='group?id=".$group."'>".$fname." ".$lname."s lag</a></td>
 									<td><a href='group?id=".$group."'>".$programme."".$grade."".$letter."</a></td>
+									
 								</tr>
 
 	                			";
