@@ -26,14 +26,6 @@
     ?>
 
     <style type="text/css">
-		#email-warning{
-            display: none;
-			color: red;
-		}
-		#password-warning{	
-            display: none;
-			color: red;
-		}
         .fields{
             display:none;
         }
@@ -142,9 +134,7 @@
     </form>
 
     <!-- SIGN UP FORM MEME -->
-    <form id="signupForm" method="post" action="db_add_user.php" onsubmit="return validate(this)" class="fields signup-fields">
-
-        <span id="email-warning"></span>
+    <form id="signupForm" method="post" action="db_add_user.php" class="fields signup-fields needs-validation" novalidate>
         
         <div class="input-group row mb-4" style = "margin-left:0;">
             <div class="input-group-prepend ">
@@ -156,6 +146,9 @@
             <input type="text" name="fname" max="64" class="form-control col-6" placeholder = "Förnamn" required>
             <label class="sr-only">Efternamn</label>
             <input type="text" name="lname" max="64"class="form-control col-6" placeholder = "Efternamn" required style= "border-left:0;">
+            <div class="invalid-feedback">
+                Fyll i ett för- och efternamn.
+            </div>
         </div>
 
         
@@ -165,14 +158,18 @@
                     <div class="input-group-text"><i class="fas fa-at"></i></div>
                 </div>
                 <label class="sr-only">Ksgyf-email</label>
-                <input type="text" name="email" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en mailadress från ksgyf." onfocusout="studentMailCheck(this);" class="form-control" placelholder = "Ksgyf-email" required>
+                <input type="text" name="email" id = "email2" pattern="[a-zA-Z0-9_.]+@?ksgyf.se" title="Ange en mailadress från ksgyf." onfocusout="studentMailCheck(this);" class="form-control" placelholder = "Ksgyf-email" required>
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-at"></i></div>
                 </div>
                 <label class="sr-only">Upprepa Ksgyf-email</label>
-                <input type="text" name="email2" class="form-control" placeholder = "Upprepa Ksgyf-email" required>
+                <input type="text" name="email2" id = "email1" class="form-control" placeholder = "Upprepa Ksgyf-email" required>
+
+                <div class="invalid-feedback">
+                    Fyll i två matchande Ksgyf-emailadresser
+                </div>
             </div>
         </div>
 
@@ -183,7 +180,7 @@
                     <div class="input-group-text"><i class="fas fa-unlock"></i></div>
                 </div>
                 <label class="sr-only">Lösenord</label>
-                <input type="password" name="password" class="form-control" placeholder = "Lösenord" required>
+                <input type="password" name="password" id = "pw1" class="form-control" placeholder = "Lösenord" required>
             </div>
 
             <div class="input-group mb-2">
@@ -191,14 +188,18 @@
                     <div class="input-group-text"><i class="fas fa-unlock"></i></div>
                 </div>
                 <label class="sr-only">Upprepa lösenord</label>
-                <input type="password" name="password2" class="form-control" placeholder = "Upprepa lösenord" required>
+                <input type="password" name="password2" id = "pw2" class="form-control" placeholder = "Upprepa lösenord" required>
+
+                <div class="invalid-feedback">
+                    Lösenorden måste matcha.
+                </div>
             </div>
         </div>
 
         <label id = "classLabel">Klass</label>
 
         <div class="form-group row mb-4" style = "margin-right: 0; margin-left:0;">
-            <select name="programme" class="classFields form-control col-4">
+            <select name="programme" class="classFields form-control col-4" required>
                 <option value="TEACHER"></option>
                 <option value="BA">BA</option>
                 <option value="EE">EE</option>
@@ -210,7 +211,7 @@
                 <option value="TE">TE</option>
                 <option value="VF">VF</option>
             </select>
-            <select name="grade" class="classFields form-control col-4">
+            <select name="grade" class="classFields form-control col-4" required>
                 <option value="TEACHER"></option>
                 <?
                     if(date('n')>=7){
@@ -227,7 +228,7 @@
                 ?>
             </select>
 
-            <select name = "letter" class = "classFields form-control col-4">
+            <select name = "letter" class = "classFields form-control col-4" required>
                 <option value="TEACHER"></option>
                     <?
                         for($i = 65; $i <= 65+12; $i++){
@@ -274,49 +275,69 @@
 
 <script type="text/javascript">
  
-    function validate(form){
-        var e = form.elements;
-        var passwordMatch = false;
-        var emailMatch = false;
-        var classSelected = true;
+    var form = document.getElementById("signupForm");
+    form.addEventListener("submit", function(event){
+        
 
-        if (e["email"].value == e["email2"].value){
+        document.querySelectorAll("#signupForm input:not([type='submit'])").forEach(function(obj){
+            obj.classList.remove("is-invalid");
+            obj.classList.add("is-valid");
+        });
 
-            emailMatch = true;
+        required = document.querySelectorAll("#signupForm [required]");
+        required.forEach(function(obj){
+            if(obj.value == ""){
+                obj.classList.add("is-invalid");
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        });
 
-        } else {
-            document.getElementById('email-warning').style.display = "inline";
-            document.getElementById('email-warning').innerHTML = "Mailadresserna måste matcha<br>";
+
+        var email1 = document.getElementById("email1");
+        var email2 = document.getElementById("email2");
+
+        var pw1 = document.getElementById("pw1");
+        var pw2 = document.getElementById("pw2");
+
+
+
+        if (email1.value != email2.value){
+            email1.classList.add("is-invalid");
+            email2.classList.add("is-invalid");
+            event.preventDefault();
+            event.stopPropagation();
         }
 
-        if (e["password"].value == e["password2"].value){
+        if (pw1.value != pw2.value){
 
-            passwordMatch = true;
-
-        } else {
-
-            document.getElementById('password-warning').style.display = "inline";
-            document.getElementById('password-warning').innerHTML = "Lösenorden måste matcha<br>";
-
+            pw1.classList.add("is-invalid");
+            pw2.classList.add("is-invalid");
+            event.preventDefault();
+            event.stopPropagation();
         }
 
-        return passwordMatch && emailMatch;
-    }
+        document.querySelectorAll("#signupForm select").forEach(function(obj){
+            if(obj.value == "TEACHER" && !obj.disabled){
+                obj.classList.add("is-invalid");
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        });
+    });
 
     function studentMailCheck(field){
         if(/\.student\@/.test(field.value)){
             <?/* när ".student@" finns i fältet*/?>
             $(".classFields")
-                .prop("disabled",false)
-                .prop("required", true);
+                .prop("disabled",false);
             $("#classLabel").css("opacity", "1");
         }
         else{
             <?/* när ".student@" inte finns i fältet*/?>
             $(".classFields")
                 .val("0")
-                .prop("disabled",true)
-                .prop("required", false);
+                .prop("disabled",true);
             $("#classLabel").css("opacity", "0");
 
         }
