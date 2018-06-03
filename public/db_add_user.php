@@ -18,7 +18,7 @@
 
    			$stmt->execute();
    			if ($stmt->fetch()){
-   				header("Location: signIn.php?message=existingemail");
+   				header("Location: signIn.php?form=signup&message=existingemail");
    				exit;
    			}
 

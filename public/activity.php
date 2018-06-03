@@ -153,18 +153,19 @@
 							        <input type="hidden" name="userId" value="'.$userId.'">
 							        <input type="hidden" name="activityId" value="'.$activityId.'">
 							        <input type="hidden" name="groupSize" value="'.$groupSize.'">
-							        <input type="submit" class="form-control" value="Gå med i aktivitet">
+							        <input type="submit" style="width:200px;" class="form-control" value="Gå med i aktivitet">
 							    </form><br>
 
 	                			';
 	                		} else {
-	                			echo "Du är redan med boi<br>";
+	                			echo "<span>Du är redan med i aktiviteten</span>";
 	                		}
-
 		            	}
 
+		            	echo '<div class="container contz">';
+		            	
 						if ($stmt = $mysqli->prepare("
-			                SELECT USERS.FIRST_NAME
+			                SELECT USERS.FIRST_NAME, USERS.LAST_NAME, USERS.PROGRAMME, USERS.GRADE, USERS.LETTER
 			                FROM USERS
 			                INNER JOIN GROUPS
 			                ON USERS.GROUP_ID = GROUPS.ID
@@ -174,25 +175,25 @@
 							$stmt->bind_param("i", $_GET["id"]);
 							$stmt->execute();
 
-							$stmt->bind_result($fName);
+							$stmt->bind_result($fname, $lname, $programme, $grade, $letter);
 
 							while($stmt->fetch()){
-	                			echo $fName."<br>";
+	                			echo "
+
+	                			<div class='row'>
+	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$fname."</span>
+	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$lname."</span>
+	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$programme."".$grade."".$letter."</span>
+	                			</div>
+
+	                			";
 	                		}
-
-		            	} else echo"AYYA";        		
-
-		        	}
-
-
-				} else {
-					echo "Aktiviteten finns inte";
+		            	}
+						
+		            	echo "</div>";
+		        	}	
 				}
-
-			} else {
-				echo "Aktiviteten finns inte";
 			}
-
 		?>
 	</div>
 
