@@ -15,16 +15,11 @@
 <head>
     <title></title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
+    <link href="stylesheets/main.css" rel="stylesheet">
     <style type="text/css">
             
         body{
             overflow: hidden;
-        }
-
-        .activity{
-            border-bottom: 1px solid black;
-            text-decoration: none !important;
         }
 
         .activity:hover{
@@ -42,8 +37,8 @@
 <body>
     <?include "header.php";?>
 
-    <div class="activities container-fluid text-center">
-        <span class="text-dark h1" style="border-bottom: 1px solid black;">Aktiviteter</span>
+    <div class="activities container text-center">
+        <span class="text-dark display-4">Aktiviteter</span>
         <?
             // HÄMTA AKTIVITEdTE
             if ($stmt = $mysqli->prepare("
@@ -63,19 +58,30 @@
 
                 $stmt->bind_result($name, $location, $time, $id);
 
+
+                echo "<table class = 'table table-striped table-bordered link-table mt-4'>";
+                echo "
+                    <thead>
+                        <tr>
+                            <th style = 'width:40%;'>Aktivitet</th>
+                            <th style = 'width:30%;'>Plats</th>
+                            <th style = 'width:30%;'>Tid</th>
+                        </tr>
+                    </thead>
+                ";
+                            
                 while($stmt->fetch()){
                     echo 
-                    '
-                        <a href="activity.php?id='.$id.'">
-                        <div class="activity text-center p-4 row justify-content-around text-dark">
-                            <span class="col-lg-4 col-md-4 col-sm-4 h3">'.$name.'</span>
-                            <span class="col-lg-4 col-md-4 col-sm-4 h3">'.$location.'</span>
-                            <span class="col-lg-4 col-md-4 col-sm-4 h3">'.$time.'</span>
-                        </div>
-                        </a>
-                    ';
-                }
+                    "
+                    <tr>
+                        <td><a href = activity.php?id=".$id.">".$name."</a></td>
+                        <td><a href = activity.php?id=".$id.">".$location."</a></td>
+                        <td><a href = activity.php?id=".$id.">".$time."</a></td>
+                    </tr>
 
+                    ";
+                }
+                echo "</table>";
             } else {
                 echo "NÅT GICK FEL";
             }

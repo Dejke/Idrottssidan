@@ -16,20 +16,6 @@
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="stylesheets/main.css">
 
-	<style>
-		.link-table td a{
-			padding: 0.75rem;
-			display:block;
-			width :100%;
-			height:100%;
-		}
-		.link-table td{
-			padding: 0 !important;
-		}
-		td a:hover{
-			text-decoration:none;
-		}
-	</style>
 </head>
 <body>
 	<?include "header.php";?>
@@ -132,7 +118,7 @@
 
 							echo "<table class = 'table table-striped link-table table-bordered table-hover mt-3'>";
 							echo "
-								<thead style='background-color:#e5edf2;'>
+								<thead'>
 									<tr>
 										<th style = 'width:65%;'>Lag</th>
 										<th style = 'width:35%;'>Klass</th>
@@ -210,7 +196,7 @@
 
 							echo "<table class = 'table table-striped table-bordered mt-3'>";
 							echo "
-								<thead style='background-color:#e5edf2;'>
+								<thead'>
 									<tr>
 										<th style = 'width:65%;'>Namn</th>
 										<th style = 'width:35%;'>Klass</th>
