@@ -259,17 +259,14 @@
 
     <br><br>
 
-    <div class="fields login-fields">
+    <div class="fields login-fields pwreset-fields w-100">
         <a href="#" id="signup">Registrera ett konto</a>
     </div>
-    <div class="fields signup-fields">
-        <a href="#" id="login">Är du redan registrerad? Logga in</a>
+    <div class="fields signup-fields pwreset-fields w-100">
+        <a href="#" id="login">Logga in</a>
     </div>
-    <div class="fields login-fields">
+    <div class="fields login-fields signup-fields w-100">
         <a href = "#" id="pwreset">Glömt ditt lösenord?</a>
-    </div>
-    <div class="fields pwreset-fields">
-        <a href = "#" id="login2">Logga in</a>
     </div>
     
 </div>
