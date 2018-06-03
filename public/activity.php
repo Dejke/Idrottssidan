@@ -15,6 +15,21 @@
 	<title></title>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="stylesheets/main.css">
+
+	<style>
+		.link-table td a{
+			padding: 0.75rem;
+			display:block;
+			width :100%;
+			height:100%;
+		}
+		.link-table td{
+			padding: 0 !important;
+		}
+		td a:hover{
+			text-decoration:none;
+		}
+	</style>
 </head>
 <body>
 	<?include "header.php";?>
@@ -36,19 +51,17 @@
 
 	                if ($stmt->fetch()){
 	                	echo "
-	                	<span class='h1 pt-3'>".$name."</span>
+	                	<span class='display-3 pt-3'>".$name."</span>
 	                	";
 
 	                	echo "
 
-		                	<div class='row p-5'>
-		                		<span class='col-lg-12 col-md-12 col-sm-12 h4'>".$description."</span>
+		                	<div class='row my-3 justify-content-center'>
+		                		<span class='col-lg-6 col-md-6 col-sm-12 lead'>".$description."</span>
 		                	</div>
-		                	<div class='row'>
-		                		<span class='col-lg-12 col-md-12 col-sm-12 h3'>Plats: ".$location."</span>
-		                	</div>
-		                	<div class='row pb-5'>
-		                		<span class='col-lg-12 col-md-12 col-sm-12 h3'>Tid: ".$time."</span>
+		                	<div class='row mb-5 justify-content-around'>
+		                		<span class='col-lg-6 col-md-6 col-sm-12 display-5'>Plats: ".$location."</span>
+		                		<span class='col-lg-6 col-md-6 col-sm-12 display-5'>Tid: ".$time."</span>
 		                	</div>
 	                	";
 	                }
@@ -117,18 +130,26 @@
 
 	                		$stmt->bind_result($group, $fname, $lname, $programme, $grade, $letter);
 
-	                		echo "<div class='containz border border-secondary rounded'>";
+							echo "<table class = 'table table-striped link-table table-bordered table-hover mt-3'>";
+							echo "
+								<thead style='background-color:#e5edf2;'>
+									<tr>
+										<th style = 'width:65%;'>Lag</th>
+										<th style = 'width:35%;'>Klass</th>
+									</tr>
+								</thead>
+							";
 	                		while($stmt->fetch()){
 
-	                			echo "<a href='group?id=".$group."'>
+	                			echo "
 
-	                			<div class='row p-3'>
-	                				<span class='col-lg-4 col-md-4 col-sm-4'>".$fname."</span>
-	                				<span class='col-lg-4 col-md-4 col-sm-4'>".$lname."</span>
-	                				<span class='col-lg-4 col-md-4 col-sm-4'>".$programme."".$grade."".$letter."</span>
-	                			</div>
+								<tr>
+							
+									<td><a href='group?id=".$group."'>".$fname." ".$lname."s lag</a></td>
+									<td><a href='group?id=".$group."'>".$programme."".$grade."".$letter."</a></td>
+								</tr>
 
-	                			</a>";
+	                			";
 	                		}
 
 		            	} else echo $mysqli->error;
@@ -187,16 +208,24 @@
 
 							$stmt->bind_result($fname, $lname, $programme, $grade, $letter);
 
-							echo "<div class='containz border border-secondary rounded'>";
+							echo "<table class = 'table table-striped table-bordered mt-3'>";
+							echo "
+								<thead style='background-color:#e5edf2;'>
+									<tr>
+										<th style = 'width:65%;'>Namn</th>
+										<th style = 'width:35%;'>Klass</th>
+									</tr>
+								</thead>
+							";
+
 							while($stmt->fetch()){
 
 	                			echo "
 
-	                			<div class='row p-3'>
-	                				<span class='col-lg-4 col-md-4 col-sm-4'>".$fname."</span>
-	                				<span class='col-lg-4 col-md-4 col-sm-4'>".$lname."</span>
-	                				<span class='col-lg-4 col-md-4 col-sm-4'>".$programme."".$grade."".$letter."</span>
-	                			</div>
+								<tr>
+									<td>".$fname." ".$lname."</td>
+									<td>".$programme."".$grade."".$letter."</td>
+								</tr>
 
 	                			";
 	                		}

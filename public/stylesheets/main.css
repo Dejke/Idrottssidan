@@ -2,5 +2,9 @@
     General style for every page. Should be combined with bootstrap.
 */
 body{
-	overflow: hidden;
+    overflow: hidden;
+    
+}
+nav{
+    margin-bottom: 40px;
 }

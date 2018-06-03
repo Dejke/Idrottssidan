@@ -38,7 +38,7 @@
   }
 
   .user-name{
-    font-size: 1.5em;
+    font-size: 1.5rem;
     position: relative;
     top: 12px;
   }
@@ -60,7 +60,8 @@
     </a>
 
   <div class="btn-group ml-auto" style="float: right;">
-    <span class="user-name vertical-center">
+  <button type="button" class="btn btn-lg user text-center navbuttonz vertical-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 20px; background: none; ">
+    <span class="user-name mr-1" style="position:relative; top:-5px;"><?/*vackert.*/?>
       
       <?
 
@@ -89,10 +90,10 @@
       ?>
 
     </span>
-    <button type="button" class="btn btn-lg user text-center navbuttonz" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" border-radius: 20px; background: none; ">
+    
       <i class="fas fa-user"></i>
     </button>
-    <div class="dropdown-menu dropdown-menu-right mt-0">
+    <div class="dropdown-menu dropdown-menu-right mt-3"  >
       <a class="dropdown-item p-2" href="user_page.php"><i class="fas fa-cog"></i> Kontoinställningar</a>
       <a class="dropdown-item p-2" href="db_log_out.php"><i class="fas fa-sign-out-alt"></i> Logga ut</a>
     </div>
