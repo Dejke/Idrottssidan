@@ -19,7 +19,8 @@
 
 	<?include "header.php";?>
 
-	<div class="members">
+    <div class="container text-center">
+	<div class="members border border-secondary rounded">
 		
 		<?
 
@@ -40,7 +41,17 @@
 
                 	while ($stmt->fetch()) {
                 		
-                		echo $fname." ".$lname."".$programme."".$grade."".$letter."<br>";
+                		echo "
+
+                            <div class='row'>
+
+                                <span class='p-3 col-lg-4 col-md-4 col-sm-4'>".$fname."</span>
+                                <span class='p-3 col-lg-4 col-md-4 col-sm-4'>".$lname."</span>
+                                <span class='p-3 col-lg-4 col-md-4 col-sm-4'>".$programme."".$grade."".$letter."</span>
+
+                            </div>
+
+                        ";
 
                 	}
 
@@ -100,25 +111,26 @@
 
                         		echo '
 
-                        			<form method="post" action="db_join_group.php">
+                        			<form method="post" class="pt-1" action="db_join_group.php">
             							<input type="hidden" name="group_id" value="'.$_GET['id'].'">
-            							<input type="submit" value="Joina grupp boi">
+            							<input type="submit" class="form-control" value="Gå med i lag">
             						</form>
 
                         		';
+                            } else {
+                                echo "<span>Laget är fullt</span>";
                             }
-
                         }   
-
                     }
-
-            	}
-
+            	} else {
+                    echo "<span>Du är redan med i laget</span>";
+                }
             }
-
         }
 
 	?>
+
+    </div>
 
 </body>
 </html>

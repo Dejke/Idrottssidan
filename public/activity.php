@@ -134,9 +134,9 @@
 	                			echo "<a href='group?id=".$group."'>
 
 	                			<div class='row p-3'>
-	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$fname."</span>
-	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$lname."</span>
-	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$programme."".$grade."".$letter."</span>
+	                				<span class='col-lg-4 col-md-4 col-sm-4'>".$fname."</span>
+	                				<span class='col-lg-4 col-md-4 col-sm-4'>".$lname."</span>
+	                				<span class='col-lg-4 col-md-4 col-sm-4'>".$programme."".$grade."".$letter."</span>
 	                			</div>
 
 	                			</a>";
@@ -204,9 +204,9 @@
 	                			echo "
 
 	                			<div class='row p-3'>
-	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$fname."</span>
-	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$lname."</span>
-	                				<span class='ol-lg-4 col-md-4 col-sm-4'>".$programme."".$grade."".$letter."</span>
+	                				<span class='col-lg-4 col-md-4 col-sm-4'>".$fname."</span>
+	                				<span class='col-lg-4 col-md-4 col-sm-4'>".$lname."</span>
+	                				<span class='col-lg-4 col-md-4 col-sm-4'>".$programme."".$grade."".$letter."</span>
 	                			</div>
 
 	                			";
