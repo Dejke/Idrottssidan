@@ -128,7 +128,7 @@
 	                		while($stmt->fetch()){
 
 								if($programme == "TEACHER"){
-									$klass = "TEACHER";
+									$klass = "Lärare";
 								}
 								else{
 									$klass = $programme."".$grade."".$letter;
@@ -138,7 +138,7 @@
 								<tr>
 							
 									<td><a href='group?id=".$group."'>".$fname." ".$lname."s lag</a></td>
-									<td><a href='group?id=".$klass."</a></td>
+									<td><a href='group?id=".$group."'>".$klass."</a></td>
 									
 								</tr>
 

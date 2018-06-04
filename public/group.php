@@ -76,7 +76,7 @@
             ";
 
             while ($stmt->fetch()) {
-                
+                $klass;
                 if($programme == "TEACHER"){
                     $klass = "Lärare";
                 }
