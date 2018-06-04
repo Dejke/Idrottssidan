@@ -18,7 +18,10 @@
 
     <style type="text/css">
         
-
+    .userpageformz{
+        background-color: #e5edf2; 
+        border-radius:5px;
+    }
     @media (min-width: 768px) {
     .container-small {
         width: 300px;
@@ -58,44 +61,43 @@
 
 	<div class="container container-small text-center">
         
-        <span class="h3 pb-2">Byt lösenord</span>
-        <form id="changePasswordForm" method="post" action="" class="pb-5">
+        <form id="changePasswordForm" method="post" action="" class="p-4 mb-5 userpageformz">
 
-            <div class="input-group">
+            <div class="input-group mb-2">
                 <div class="input-group-prepend ">
                     <div class="input-group-text">
                         <i class="fas fa-unlock"></i>
                     </div>
                 </div>
                 <label class="sr-only">Lösenord</label>
-                <input type="text" name="password" class="form-control">
+                <input type="text" name="password" class="form-control" placeholder="Gammalt Lösenord">
             </div>
 
-            <div class="input-group">
-                <div class="input-group-prepend ">
-                    <div class="input-group-text">
-                        <i class="fas fa-unlock"></i>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend ">
+                        <div class="input-group-text">
+                            <i class="fas fa-lock"></i>
+                        </div>
                     </div>
+                    <label class="sr-only">Nytt lösenord</label>
+                    <input type="text" name="newpassword" class="form-control" placeholder="Nytt lösenord">
                 </div>
-                <label class="sr-only">Nytt lösenord</label>
-                <input type="text" name="newpassword" class="form-control">
-            </div>
 
-            <div class="input-group mb-4">
-                <div class="input-group-prepend ">
-                    <div class="input-group-text">
-                        <i class="fas fa-unlock"></i>
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend ">
+                        <div class="input-group-text">
+                            <i class="fas fa-lock"></i>
+                        </div>
                     </div>
+                    <label class="sr-only">Nytt lösenord</label>
+                    <input type="text" name="newpassword2" class="form-control" placeholder="Upprepa nytt lösenord">
                 </div>
-                <label class="sr-only">Nytt lösenord</label>
-                <input type="text" name="newpassword2" class="form-control">
             </div>
-
             <input type="submit" value="Byt Lösenord" class="form-control">
         </form>
 
-        <span class="h3 pt-5 mt-5">Byt klass</span>
-        <form id="changePasswordForm" method="post" action="" class="">
+        <form id="changeClassForm" method="post" action="" class="p-4 userpageformz">
             <div class="form-group row mb-4" style = "margin-right: 0; margin-left:0;">
                 <select name="programme" class="classFields form-control col-4" required>
                     <option value="TEACHER"></option>

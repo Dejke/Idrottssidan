@@ -7,6 +7,9 @@ body{
 }
 nav{
     margin-bottom: 40px;
+
+    background-color:#e5edf2;
+    
 }
 .link-table td a{
     padding: 0.75rem;
