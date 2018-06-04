@@ -23,13 +23,10 @@
     -webkit-transition:.25s;
     transition:.25s;
     background-color: #e5edf2;
+    cursor: default;
   }
   .navbuttonz:hover{
     color: #444444;
-  }
-
-  .btn:focus i{
-    -webkit-text-stroke: 2px #004788;
   }
 
   .btn:focus, .btn:active:focus, .btn.active:focus{
@@ -60,37 +57,37 @@
     </a>
 
   <div class="btn-group ml-auto" style="float: right;">
-  <button type="button" class="btn btn-lg user text-center navbuttonz vertical-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 20px; background: none; ">
-    <span class="user-name mr-1" style="position:relative; top:-5px;"><?/*vackert.*/?>
+    <button type="button" class="btn btn-lg text-center navbuttonz vertical-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 20px; background: none; ">
+      <span class="user-name mr-1" style="position:relative; top:-5px;"><?/*vackert.*/?>
+        
+        <?
+
+          // GET NAMEn
+          if ($stmt = $mysqli->prepare("
+
+              SELECT USERS.FIRST_NAME, USERS.LAST_NAME
+              FROM USERS
+              WHERE USERS.ID = ?
+
+          ")){
+            
+              $stmt->bind_param("i", $_SESSION["USER"]);
+              $stmt->execute();
+
+              $stmt->bind_result($fname, $lname);
+
+              if ($stmt->fetch()){
+                echo $fname." ".$lname;
+              }
+
+              $stmt->close();
+
+          } 
+
+        ?>
+
+      </span>
       
-      <?
-
-        // GET NAMEn
-        if ($stmt = $mysqli->prepare("
-
-            SELECT USERS.FIRST_NAME, USERS.LAST_NAME
-            FROM USERS
-            WHERE USERS.ID = ?
-
-        ")){
-          
-            $stmt->bind_param("i", $_SESSION["USER"]);
-            $stmt->execute();
-
-            $stmt->bind_result($fname, $lname);
-
-            if ($stmt->fetch()){
-              echo $fname." ".$lname;
-            }
-
-            $stmt->close();
-
-        } 
-
-      ?>
-
-    </span>
-    
       <i class="fas fa-user"></i>
     </button>
     <div class="dropdown-menu dropdown-menu-right mt-3"  >
@@ -99,5 +96,4 @@
     </div>
    
   </div>
-
 </nav>
