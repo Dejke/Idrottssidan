@@ -45,7 +45,7 @@
 
 </style>
 
-<nav class="navbar navbar-expand-lg >
+<nav class="navbar navbar-expand-lg" >
     <a class="navbar-brand" href="index">
     <div style= "
                     background:url('images/logo.svg');
