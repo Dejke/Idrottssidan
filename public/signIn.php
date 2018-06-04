@@ -287,7 +287,7 @@
             obj.classList.add("is-valid");
         });
 
-        required = document.querySelectorAll("#signupForm [required]");
+        required = document.querySelectorAll("#signupForm [required]:not([disabled])");
         required.forEach(function(obj){
             if(obj.value == ""){
                 obj.classList.add("is-invalid");

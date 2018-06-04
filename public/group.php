@@ -76,10 +76,18 @@
             ";
 
             while ($stmt->fetch()) {
+                
+                if($programme == "TEACHER"){
+                    $klass = "Lärare";
+                }
+                else{
+                    $klass = $programme."".$grade."".$letter;
+                }
+
                 echo "
                     <tr>
                         <td>".$fname." ".$lname."</td>
-                        <td>".$programme."".$grade."".$letter."</td>
+                        <td>".$klass."</td>
                     </tr>
                 ";
 

@@ -39,9 +39,9 @@
     		$password = password_hash($_POST["password"], PASSWORD_BCRYPT);
     		$first_name = ucfirst(strtolower($_POST["fname"]));
     		$last_name = ucfirst(strtolower($_POST["lname"]));
-    		$programme = $_POST["programme"];
-    		$grade = $_POST["grade"];
-    		$letter = $_POST["letter"];
+    		$programme = $_POST["programme"]?$_POST["programme"]:"TEACHER";
+    		$grade = $_POST["grade"]?$_POST["grade"]:"TEACHER";
+    		$letter = $_POST["letter"]?$_POST["letter"]:"TEACHER";
 
     		$stmt->execute();
     		$stmt->close();

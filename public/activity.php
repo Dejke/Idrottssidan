@@ -127,12 +127,18 @@
 							";
 	                		while($stmt->fetch()){
 
+								if($programme == "TEACHER"){
+									$klass = "TEACHER";
+								}
+								else{
+									$klass = $programme."".$grade."".$letter;
+								}
 	                			echo "
 
 								<tr>
 							
 									<td><a href='group?id=".$group."'>".$fname." ".$lname."s lag</a></td>
-									<td><a href='group?id=".$group."'>".$programme."".$grade."".$letter."</a></td>
+									<td><a href='group?id=".$klass."</a></td>
 									
 								</tr>
 
@@ -207,11 +213,19 @@
 
 							while($stmt->fetch()){
 
+
+								if($programme == "TEACHER"){
+									$klass = "Lärare";
+								}
+								else{
+									$klass = $programme."".$grade."".$letter;
+								}
+
 	                			echo "
 
 								<tr>
 									<td>".$fname." ".$lname."</td>
-									<td>".$programme."".$grade."".$letter."</td>
+									<td>".$klass."</td>
 								</tr>
 
 	                			";
